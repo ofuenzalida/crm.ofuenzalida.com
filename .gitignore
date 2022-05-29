@@ -1,0 +1,30 @@
+node_modules
+build
+coverage
+.vscode
+.DS_STORE
+tmp
+.idea
+
+### Log que de omiten
+*.log
+*.idea
+.idea/
+.vscode
+*.lock
+*.DS_Store
+*/vendor/
+*/*.log
+
+### JavaScript que se omiten
+
+
+### CSS que se omiten
+
+
+### Cache que se omiten
+
+
+### Directorio que se omiten
+*/node_modules
+*/node_modules/*
