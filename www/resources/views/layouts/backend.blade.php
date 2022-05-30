@@ -12,12 +12,10 @@
     <meta name="author" content="Octavio Fuenzalida">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }} {{ (isset($title) ? $title : '') }}</title>
-    <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}"/>
     <link rel="stylesheet" href="{{ asset('assets/css/theme.css') }}"/>
     <link rel="stylesheet" href="{{ asset('assets/css/theme-plugins.css') }}"/>
     @yield("css")
-    <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 <body class="vertical-layout vertical-menu-modern  navbar-floating footer-static  " data-open="click"

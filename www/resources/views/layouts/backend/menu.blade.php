@@ -1,9 +1,9 @@
 <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
     <div class="navbar-header">
         <ul class="nav navbar-nav flex-row">
-            <li class="nav-item me-auto"><a class="navbar-brand"
-                                            href="../../../html/ltr/vertical-menu-template-dark/index.html"><span
-                            class="brand-logo">
+            <li class="nav-item me-auto">
+                <a class="navbar-brand" href="{{ url("") }}">
+                    <span class="brand-logo">
                             <svg viewbox="0 0 139 95" version="1.1" xmlns="http://www.w3.org/2000/svg"
                                  xmlns:xlink="http://www.w3.org/1999/xlink" height="24">
                                 <defs>
@@ -36,75 +36,180 @@
                                         </g>
                                     </g>
                                 </g>
-                            </svg></span>
+                            </svg>
+                    </span>
                     <h2 class="brand-text">Vuexy</h2>
-                </a></li>
-            <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pe-0" data-bs-toggle="collapse"><i
-                            class="d-block d-xl-none text-primary toggle-icon font-medium-4" data-feather="x"></i><i
-                            class="d-none d-xl-block collapse-toggle-icon font-medium-4  text-primary"
-                            data-feather="disc" data-ticon="disc"></i></a></li>
+                </a>
+            </li>
+            <li class="nav-item nav-toggle">
+                <a class="nav-link modern-nav-toggle pe-0" data-bs-toggle="collapse">
+                    <i class="d-block d-xl-none text-primary toggle-icon font-medium-4" data-feather="x"></i>
+                    <i class="d-none d-xl-block collapse-toggle-icon font-medium-4  text-primary"
+                       data-feather="disc" data-ticon="disc"></i>
+                </a>
+            </li>
         </ul>
     </div>
     <div class="shadow-bottom"></div>
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-            <li class=" nav-item"><a class="d-flex align-items-center" href="index.html"><i
-                            data-feather="home"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Dashboards</span><span
-                            class="badge badge-light-warning rounded-pill ms-auto me-1">2</span></a>
+            <li class="nav-item">
+                <a class="d-flex align-items-center" href="index.html">
+                    <i data-feather="home"></i>
+                    <span class="menu-title text-truncate" data-i18n="Dashboards">Dashboards</span>
+                    <span class="badge badge-light-warning rounded-pill ms-auto me-1">2</span>
+                </a>
                 <ul class="menu-content">
-                    <li><a class="d-flex align-items-center" href="dashboard-analytics.html"><i
-                                    data-feather="circle"></i><span class="menu-item text-truncate"
-                                                                    data-i18n="Analytics">Analytics</span></a>
+                    <li>
+                        <a class="d-flex align-items-center" href="dashboard-analytics.html">
+                            <i data-feather="circle"></i>
+                            <span class="menu-item text-truncate" data-i18n="Analytics">Analytics</span>
+                        </a>
                     </li>
-                    <li class="active"><a class="d-flex align-items-center" href="dashboard-ecommerce.html"><i
-                                    data-feather="circle"></i><span class="menu-item text-truncate"
-                                                                    data-i18n="eCommerce">eCommerce</span></a>
+                    <li class="active">
+                        <a class="d-flex align-items-center" href="dashboard-ecommerce.html">
+                            <i data-feather="circle"></i>
+                            <span class="menu-item text-truncate" data-i18n="eCommerce">eCommerce</span>
+                        </a>
                     </li>
                 </ul>
             </li>
-            <li class=" navigation-header">
-                <span data-i18n="Misc">Configuration</span>
+
+            <li class="navigation-header">
+                <span data-i18n="{{ __("task.name") }}">{{ __("task.name") }}</span>
                 <i data-feather="more-horizontal"></i>
             </li>
-            <li class=" nav-item">
-                <a class="d-flex align-items-center" href="{{ url("configuration/user") }}">
+            <li class="nav-item">
+                <a class="d-flex align-items-center" href="{{ url("task") }}">
                     <i data-feather="user"></i>
-                    <span class="menu-title text-truncate" data-i18n="Users">Users</span>
+                    <span class="menu-title text-truncate"
+                          data-i18n="{{ __("task.menu.name") }}">{{ __("task.menu.name") }}</span>
                 </a>
                 <ul class="menu-content">
-                    <li>
-                        <a class="d-flex align-items-center" href="{{ url("configuration/user/new") }}">
+                    <li class="{{ ((isset($menu_active) && $menu_active == 'task_new') ? "active" : "") }}">
+                        <a class="d-flex align-items-center" href="{{ url("task/new") }}">
                             <i data-feather="circle"></i>
-                            <span class="menu-item text-truncate" data-i18n="User New">New</span>
+                            <span class="menu-item text-truncate"
+                                  data-i18n="{{ __("task.menu.name") }} {{ __("task.menu.new") }}">{{ __("task.menu.new") }}</span>
                         </a>
                     </li>
-                    <li>
-                        <a class="d-flex align-items-center" href="{{ url("configuration/user/list") }}">
+                    <li class="{{ ((isset($menu_active) && $menu_active == 'sale_list') ? "active" : "") }}">
+                        <a class="d-flex align-items-center" href="{{ url("task/list") }}">
                             <i data-feather="circle"></i>
-                            <span class="menu-item text-truncate" data-i18n="User List">List</span>
+                            <span class="menu-item text-truncate"
+                                  data-i18n="{{ __("task.menu.name") }} {{ __("task.menu.list") }}">{{ __("task.menu.list") }}</span>
                         </a>
                     </li>
                 </ul>
             </li>
-            <li class=" nav-item">
-                <a class="d-flex align-items-center" href="{{ url("configuration/tax") }}">
-                    <i data-feather="send"></i>
-                    <span class="menu-title text-truncate" data-i18n="Users">Taxes</span>
+
+            <li class="navigation-header">
+                <span data-i18n="{{ __("sale.name") }}">{{ __("sale.name") }}</span>
+                <i data-feather="more-horizontal"></i>
+            </li>
+            <li class="nav-item">
+                <a class="d-flex align-items-center" href="{{ url("sale") }}">
+                    <i data-feather="user"></i>
+                    <span class="menu-title text-truncate"
+                          data-i18n="{{ __("sale.menu.name") }}">{{ __("sale.menu.name") }}</span>
                 </a>
                 <ul class="menu-content">
-                    <li>
-                        <a class="d-flex align-items-center" href="{{ url("configuration/tax/new") }}">
+                    <li class="{{ ((isset($menu_active) && $menu_active == 'sale_new') ? "active" : "") }}">
+                        <a class="d-flex align-items-center" href="{{ url("configuration/user/new") }}">
                             <i data-feather="circle"></i>
-                            <span class="menu-item text-truncate" data-i18n="User New">New</span>
+                            <span class="menu-item text-truncate"
+                                  data-i18n="{{ __("configuration.menu.user.name") }} {{ __("configuration.menu.user.new") }}">{{ __("configuration.menu.user.new") }}</span>
                         </a>
                     </li>
-                    <li>
-                        <a class="d-flex align-items-center" href="{{ url("configuration/tax/list") }}">
+                    <li class="{{ ((isset($menu_active) && $menu_active == 'sale_list') ? "active" : "") }}">
+                        <a class="d-flex align-items-center" href="{{ url("configuration/user/list") }}">
                             <i data-feather="circle"></i>
-                            <span class="menu-item text-truncate" data-i18n="User List">List</span>
+                            <span class="menu-item text-truncate"
+                                  data-i18n="{{ __("configuration.menu.user.name") }} {{ __("configuration.menu.user.list") }}">{{ __("configuration.menu.user.list") }}</span>
                         </a>
                     </li>
                 </ul>
+            </li>
+
+            <li class="navigation-header">
+                <span data-i18n="{{ __("configuration.name") }}">{{ __("configuration.name") }}</span>
+                <i data-feather="more-horizontal"></i>
+            </li>
+            <li class="nav-item">
+                <a class="d-flex align-items-center" href="{{ url("configuration/user") }}">
+                    <i data-feather="user"></i>
+                    <span class="menu-title text-truncate"
+                          data-i18n="{{ __("configuration.menu.user.name") }}">{{ __("configuration.menu.user.name") }}</span>
+                </a>
+                <ul class="menu-content">
+                    <li class="{{ ((isset($menu_active) && $menu_active == 'configuration_user_new') ? "active" : "") }}">
+                        <a class="d-flex align-items-center" href="{{ url("configuration/user/new") }}">
+                            <i data-feather="circle"></i>
+                            <span class="menu-item text-truncate"
+                                  data-i18n="{{ __("configuration.menu.user.name") }} {{ __("configuration.menu.user.new") }}">{{ __("configuration.menu.user.new") }}</span>
+                        </a>
+                    </li>
+                    <li class="{{ ((isset($menu_active) && $menu_active == 'configuration_user_list') ? "active" : "") }}">
+                        <a class="d-flex align-items-center" href="{{ url("configuration/user/list") }}">
+                            <i data-feather="circle"></i>
+                            <span class="menu-item text-truncate"
+                                  data-i18n="{{ __("configuration.menu.user.name") }} {{ __("configuration.menu.user.list") }}">{{ __("configuration.menu.user.list") }}</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="d-flex align-items-center" href="{{ url("configuration/customer/tax") }}">
+                    <i data-feather="users"></i>
+                    <span class="menu-title text-truncate"
+                          data-i18n="{{ __("configuration.menu.customer.name") }}">{{ __("configuration.menu.customer.name") }}</span>
+                </a>
+                <ul class="menu-content">
+                    <li class="{{ ((isset($menu_active) && $menu_active == 'configuration_customer_list') ? "active" : "") }}">
+                        <a class="d-flex align-items-center" href="{{ url("configuration/customer/new") }}">
+                            <i data-feather="circle"></i>
+                            <span class="menu-item text-truncate"
+                                  data-i18n="{{ __("configuration.menu.customer.name") }} {{ __("configuration.menu.customer.new") }}">{{ __("configuration.menu.customer.new") }}</span>
+                        </a>
+                    </li>
+                    <li class="{{ ((isset($menu_active) && $menu_active == 'configuration_customer_list') ? "active" : "") }}">
+                        <a class="d-flex align-items-center" href="{{ url("configuration/customer/list") }}">
+                            <i data-feather="circle"></i>
+                            <span class="menu-item text-truncate"
+                                  data-i18n="{{ __("configuration.menu.customer.name") }} {{ __("configuration.menu.customer.list") }}">{{ __("configuration.menu.customer.list") }}</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="d-flex align-items-center" href="{{ url("configuration/tax") }}">
+                    <i data-feather="send"></i>
+                    <span class="menu-title text-truncate"
+                          data-i18n="{{ __("configuration.menu.tax.name") }}">{{ __("configuration.menu.tax.name") }}</span>
+                </a>
+                <ul class="menu-content">
+                    <li class="{{ ((isset($menu_active) && $menu_active == 'configuration_tax_list') ? "active" : "") }}">
+                        <a class="d-flex align-items-center" href="{{ url("configuration/tax/new") }}">
+                            <i data-feather="circle"></i>
+                            <span class="menu-item text-truncate"
+                                  data-i18n="{{ __("configuration.menu.tax.name") }} {{ __("configuration.menu.tax.new") }}">{{ __("configuration.menu.tax.new") }}</span>
+                        </a>
+                    </li>
+                    <li class="{{ ((isset($menu_active) && $menu_active == 'configuration_tax_list') ? "active" : "") }}">
+                        <a class="d-flex align-items-center" href="{{ url("configuration/tax/list") }}">
+                            <i data-feather="circle"></i>
+                            <span class="menu-item text-truncate"
+                                  data-i18n="{{ __("configuration.menu.tax.name") }} {{ __("configuration.menu.tax.list") }}">{{ __("configuration.menu.tax.list") }}</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="d-flex align-items-center" href="{{ url("configuration/invoice") }}">
+                    <i data-feather="message-square"></i>
+                    <span class="menu-title text-truncate"
+                          data-i18n="{{ __("configuration.menu.invoice.name") }}">{{ __("configuration.menu.invoice.name") }}</span>
+                </a>
             </li>
         </ul>
     </div>

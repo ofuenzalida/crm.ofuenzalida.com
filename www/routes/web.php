@@ -14,6 +14,11 @@
     |
     */
 
+    Route::any("/", function()
+    {
+        return redirect("/home");
+    });
+
     Route::group([
         'prefix'     => 'home',
         'namespace'  => 'Home',
