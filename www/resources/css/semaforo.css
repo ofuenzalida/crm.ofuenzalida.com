@@ -1,0 +1,58 @@
+ul.semaforo {
+    position: relative;
+    width: 100px; /* para 5 (ancho li x nº de círculos total) */
+    padding: 0;
+    list-style-type: none;
+}
+
+ul.semaforo li {
+    position: relative;
+    display: block;
+    float: left;
+    width: 15px; /* ancho de cada círculo */
+    height: 15px;
+    border-radius: 50%;
+    background: lightgrey;
+    margin-top: 0px;
+}
+
+.rojo li:nth-of-type(1) {
+    background: #cc0000;
+}
+
+.naranja li:nth-of-type(2) {
+    background: #FF9326;
+}
+
+.verde li:nth-of-type(3) {
+    background: #00ff00;
+}
+
+.azul li:nth-of-type(4) {
+    background: #3366ff;
+}
+
+.amarillo li:nth-of-type(5) {
+    background: #ffff00;
+}
+
+
+.rojo li {
+    background: #cc0000 !important;
+}
+
+.naranja li {
+    background: #FF9326 !important;
+}
+
+.verde li {
+    background: #00ff00 !important;
+}
+
+.azul li {
+    background: #3366ff !important;
+}
+
+.amarillo li {
+    background: #ffff00 !important;
+}

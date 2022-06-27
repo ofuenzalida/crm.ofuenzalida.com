@@ -23,5 +23,15 @@
                 "new"  => "Nuevo",
                 "list" => "Listado",
             ],
+            "house"    => [
+                "name" => "Casas",
+                "new"  => "Nueva",
+                "list" => "Listado",
+            ],
+            "lawn"     => [
+                "name" => "Cesped",
+                "new"  => "Nuevo",
+                "list" => "Listado",
+            ],
         ],
     ];

@@ -1,0 +1,22 @@
+body {
+    margin: 0
+}
+
+#map {
+    height: calc(100vh - 150px);
+    z-index: 2 !important;
+}
+
+#leaflet-marker-icon div span {
+    color: #0a0a0a;
+}
+
+.leaflet-popup-geofence .name {
+    display: block;
+    white-space: nowrap;
+    color: #ffffff;
+    padding: 4px;
+    border: 1px solid #d9d9d9;
+    opacity: 0.8;
+    text-shadow: 1px 1px 1px #000;
+}

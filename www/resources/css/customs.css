@@ -1,0 +1,292 @@
+/*--------DARK LAYOUT-----------------------*/
+/*FONDO LOGIN*/
+/*.aut-bg-img*/
+.video {
+    margin: 0 !important;
+    width: 100% !important;
+    position: fixed !important;
+    min-width: 100% !important;
+    min-height: 100% !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translateX(-50%) translateY(-50%) !important;
+    z-index: -1 !important;
+    filter: grayscale(50%) !important;
+}
+
+/*BARRA DE LOGIN*/
+.auth-wrapper .auth-side-form {
+    position: relative !important;
+    min-height: 100% !important;
+    background: #00000080 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    left: auto !important;
+    float: right !important;
+    z-index: 1 !important;
+}
+
+.logo_pestaña {
+    background: url("/images/bsa_pestana.png") !important;
+}
+
+.fondo-cpadmin {
+    background-image: url("../assets/fondo-min.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+/*LOGO BSA-MOVE */
+
+.main-menu .navbar-header .navbar-brand .brand-logo {
+    background: url("../images/bsa_move.png") no-repeat;
+    /*background-position: -65px -54px;*/
+    height: 38px;
+    width: 200px;
+}
+
+/*.azlogo-superior{
+    background:url("/images/bsa_move.png")!important;
+    height: 38px !important;
+    width: 198px !important;
+}*/
+
+.logo_azurian {
+    background: url("../assets/azurian_logo.png");
+    height: 38px;
+    width: 198px;
+}
+
+.azmap-marker {
+    background: #ca1111 !important;
+    border: 2px solid #000000 !important;
+    padding: 3px !important;
+}
+
+/*FONDO LAYOUT DARK*/
+body.dark-layout {
+    background-image: url('../images/fondo-min.png') !important;
+}
+
+/*FONDO LAYOUT DIA*/
+body {
+    background-image: url('../images/fondo-min.png') !important;
+}
+
+body {
+    margin: 0;
+    font-family: "Montserrat", Helvetica, Arial, serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.45;
+    color: #F2F2F2;
+    text-align: left;
+    background-color: #335AA6;
+}
+
+/*COLOR ETIQUETA GEOCERCA*/
+.my-other-marker {
+    background: #335AA6B8 !important;
+    border: 2px solid #335AA6B8 !important;
+    padding: 3px !important;
+}
+
+/*COLOR ICONO SUPERIOR (CIRCULO)*/
+.primary {
+    color: #FFC000 !important;
+}
+
+/*BARRA SUPERIOR INTERNA TRACK DARK*/
+body.dark-layout .header-navbar-shadow {
+    background: transparent !important;
+}
+
+/*COLOR BARRA SUPERIOR TRACK DARK*/
+body.dark-lay .header-navbar out {
+    background-color: #10163A !important;
+}
+
+/*BARRA SUPERIOR CPADMIN DARK*/
+body.dark-layout.horizontal-layout .header-navbar {
+    background-color: #10163A !important;
+}
+
+/*BARRA SUPERIOR CPADMIN DIA*/
+.horizontal-layout .header-navbar {
+    background-color: #FAFAFA !important;
+}
+
+/*COLOR TEXTO BARRA LATERAL IZQUIERA DARK*/
+/*body.dark-layout p, body.dark-layout small, body.dark-layout span,*/
+body.dark-layout label {
+    color: #F2F2F2 !important;
+}
+
+/*COLOR TEXTO BARRA LATERAL IZQUIERA DIA*/
+/*body.dark-layout p, body.dark-layout small, body.dark-layout span,*/
+label {
+    color: #ffffff !important;
+}
+
+/**/
+.azcolor-fechaestado {
+    color: #335AA6 !important;
+}
+
+/*COLOR CAPA BARRA LATERAL IZQUIERDA, BARRA SUPERIOR LADO IZQUIERDO Y DERECHO +
+PARTE DE LOGO LERA MENU SUPERIOR*/
+a {
+    color: #FAFAFA !important;
+    text-decoration: none;
+    background-color: transparent !important;
+}
+
+/*COLOR SELECCION MIXER BARRA LATERAL IZQUIERDA FLEET*/
+.main-menu.menu-light .navigation > li.active > a {
+    background: linear-gradient(118deg, transparent, rgba(51, 90, 166, 0.7)) !important;
+    background-color: rgba(0, 0, 0, 0);
+    box-shadow: 0 0 10px 1px rgb(166, 165, 159);
+    color: #fff;
+    font-weight: 400;
+    border-radius: 4px;
+}
+
+/*COLOR MENSAJE*/
+.badge.badge-primary {
+    background-color: #F24C3D !important;
+}
+
+/*COLOR LINEA SUPERIOR CAJA ESTADOS DARK*/
+body.dark-layout .card .card-body, body.dark-layout .card .card-footer {
+    color: #FAFAFA !important;
+    border-color: #FAFAFA !important;
+}
+
+/*COLOR LINEA SUPERIOR CAJA ESTADOS DIA*/
+body.dark-layout .card .card-body, body.dark-layout .card .card-footer {
+    color: #335AA6 !important;
+    border-color: #335AA6 !important;
+}
+
+/*CAJAS CPADMIN*/
+body.dark-layout .card {
+    background-color: #FAFAFA !important;
+}
+
+/*COLOR CAJA ESTADO*/
+.bg-success {
+    background-color: #10163A !important;
+}
+
+/*NUMEROS CAJAS CPADMIN*/
+body.dark-layout h1, body.dark-layout h2, body.dark-layout h3, body.dark-layout h5, body.dark-layout h6 {
+    color: #335AA6 !important;
+}
+
+/*TEXTO CAJAS CPADMIN*/
+text-muted {
+    color: #335AA6 !important;
+}
+
+/*BARRA INFERIOR COPYRIGHT CPADMIN DARK*/
+body.dark-layout.fixed-footer .footer {
+    background-color: transparent !important;
+}
+
+/*BARRA INFERIOR COPYRIGHT CPADMIN DARK*/
+body.fixed-footer .footer {
+    background-color: transparent !important;
+}
+
+/*NUMERO CAJA ESTADOS*/
+body.dark-layout h4 {
+    color: #FAFAFA !important;
+}
+
+/*TITULO 10 CAMIONES*/
+p {
+    color: #FAFAFA !important;
+    font-size: "4" !important;
+}
+
+.logomixer {
+    background-image: url('/images/mixerbsa2.png') !important;
+    height: 25px !important;
+    width: 15px !important;
+}
+
+/*COLOR ICONOS BARRA SUPERIOR TRACK*/
+body.dark-layout .header-navbar .navbar-container .nav .nav-item .nav-link {
+    color: #F2F2F2 !important;
+    background-color: transparent !important;
+}
+
+/*COLOR ICONO BARRA SUPERIOR TRACK SELECCION*/
+.header-navbar .navbar-container .bookmark-wrapper ul.nav li > a.nav-link i:hover {
+    color: #FFC000 !important;
+}
+
+/*COLOR BARRA ICONO SUPERIOR IZQUIERDO CPADMIN*/
+.header-navbar {
+    padding: 0px !important;
+    min-height: 4.5rem !important;
+    font-family: "Montserrat", Helvetica, Arial, serif !important;
+    transition: 300ms ease all !important;
+    background: #10163a !important;
+    background-color: #10163A !important;
+    z-index: 1001 !important;
+}
+
+/*COLOR LETRA SELECCION MENU SUPERIOR CPADMIN*/
+body.dark-layout.horizontal-layout .main-menu-content .navbar-nav .dropdown-menu a:hover {
+    color: #FFC000 !important;
+}
+
+/*COLOR GEOCERCA TALLERES*/
+.aztalleres {
+    background: #d33a15b8 !important;
+    border: 2px solid #d33a15 !important;
+    padding: 3px !important;
+}
+
+/*COLOR GEOCERCA OBRAS*/
+.azobras {
+    color: blue !important;
+}
+
+/*--------LAYOUT--DIA-----------------------*/
+
+
+.aggrid .ag-paging-panel span[ref="lbCurrent"] {
+    background-color: #335aa6 !important;
+}
+
+body form label {
+    color: #000000 !important;
+}
+
+body.dark-layout label {
+    color: #ffffff !important;
+}
+
+body.dark-layout textarea.form-control {
+    border: 1px solid #d9d9d9;
+    color: #5f5f5f;
+}
+
+.select2-selection__rendered, .select2-results__option {
+    color: #000000 !important
+}
+
+body.dark-layout .select2-selection__rendered, body.dark-layout .select2-results__option {
+    color: #ffffff !important
+}
+
+body.dark-layout form ul li span {
+    color: #000000 !important;
+}
+
+body form ul li span {
+    color: #000000 !important;
+}

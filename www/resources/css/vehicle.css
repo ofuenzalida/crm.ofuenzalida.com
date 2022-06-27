@@ -1,0 +1,204 @@
+/**
+ * Table de informacion del ticket
+ */
+.vehicle_info_ticket
+{
+    font-size: 10px !important;
+}
+
+.tab-content div table td
+{
+    color: white;
+}
+
+.leaflet-popup-content-wrapper, .leaflet-popup-tip
+{
+    color: #ffffff;
+}
+
+.vehicle_operator
+{
+    font-size: 10px;
+    margin: auto;
+    text-align: center;
+}
+
+
+/**
+ * Tabla de camiones en burbujas
+ */
+table.vehicle_bubble
+{
+    background-color: transparent !important;
+}
+
+table.vehicle_bubble tr td
+{
+    background-color: #283046 !important;
+    padding:          0.72rem !important;
+}
+
+/**
+ * Cambio de información en panel izquierdo
+ */
+.vehicle_ticket_state
+{
+    margin-top: 2px;
+}
+
+.vehicle_last_connection
+{
+    font-size: 8px;
+}
+
+.vehicle_odometer
+{
+    font-size: 10px;
+    margin: auto;
+    text-align: center;
+}
+
+.vehicle_horometer
+{
+    font-size: 10px;
+    margin: auto;
+    text-align: center;
+}
+
+.vehicle_rssi
+{
+    margin: auto;
+    text-align: center;
+}
+
+.vehicle_rpm
+{
+    font-size: 10px;
+    margin: auto;
+    text-align: center;
+}
+
+.vehicle_lic_num
+{
+    font-size: 10px;
+    margin: auto;
+    text-align: center;
+}
+
+.vehicle_speed
+{
+    font-size: 10px;
+}
+
+.vehicle_trademark
+{
+    font-size: 10px;
+}
+
+.vehicle_owner_name
+{
+    font-size: 10px;
+}
+
+.divider .divider-text
+{
+    font-size: 16px;
+}
+
+.vehicle-table-col
+{
+    margin-top: 10px;
+}
+
+.card-body
+{
+    padding: 5px;
+}
+
+.main-menu .navbar-header
+{
+    height: 5.45rem;
+}
+
+
+/* Diseño de Cluster en Mapa */
+.cluster .cluster-inner
+{
+    display:    block;
+    position:   relative;
+    width:      100%;
+    height:     100%;
+    text-align: center
+}
+
+.cluster .cluster-inner:after, .cluster .cluster-inner:before
+{
+    content:       " ";
+    display:       block;
+    position:      absolute;
+    border:        3px solid;
+    border-color:  green green transparent green;
+    border-radius: 50%
+}
+
+.cluster .cluster-inner:before
+{
+    top:    0;
+    left:   0;
+    width:  100%;
+    height: 100%
+}
+
+.cluster .cluster-inner:after
+{
+    left:         7px;
+    top:          7px;
+    width:        44px;
+    width:        -webkit-calc(100% - 14px);
+    width:        -moz-calc(100% - 14px);
+    width:        -o-calc(100% - 14px);
+    width:        calc(100% - 14px);
+    height:       44px;
+    height:       -webkit-calc(100% - 14px);
+    height:       -moz-calc(100% - 14px);
+    height:       -o-calc(100% - 14px);
+    height:       calc(100% - 14px);
+    border-color: #1b99bd #1b99bd transparent #1b99bd
+}
+
+.cluster .cluster-inner b
+{
+    color:         #fff;
+    display:       block;
+    position:      absolute;
+    background:    #1b99bd;
+    border-radius: 50%;
+    line-height:   30px;
+    left:          14px;
+    top:           14px;
+    width:         30px;
+    width:         -webkit-calc(100% - 28px);
+    width:         -moz-calc(100% - 28px);
+    width:         -o-calc(100% - 28px);
+    width:         calc(100% - 28px);
+    height:        30px;
+    height:        -webkit-calc(100% - 28px);
+    height:        -moz-calc(100% - 28px);
+    height:        -o-calc(100% - 28px);
+    height:        calc(100% - 28px)
+}
+
+.cluster.cluster-large .cluster-inner:before
+{
+    border-color: #1b99bd #1b99bd transparent #1b99bd
+}
+
+.cluster.cluster-large .cluster-inner:after
+{
+    border-color: green green transparent green
+}
+
+.cluster.cluster-large .cluster-inner b
+{
+    background: green
+}

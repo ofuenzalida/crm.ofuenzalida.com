@@ -1,0 +1,20 @@
+.ticket_table_info
+{
+    font-size: 8px !important;
+}
+
+.ticket_table_info th, .ticket_table_info td
+{
+    padding: 10px 10px !important;
+}
+
+
+.ticket_client
+{
+    font-size: 14px !important;;
+}
+
+.ticket_address
+{
+    font-size: 14px !important;;
+}

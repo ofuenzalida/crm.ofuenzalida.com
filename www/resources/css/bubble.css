@@ -1,0 +1,147 @@
+/**
+ * Estilo para linea de camiones, burbujas
+ */
+.dark-layout .circulo {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    /*background: #3355a6;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /*margin: -14px auto;*/
+    padding: 6%;
+    font-size: 10px;
+    margin:auto;
+}
+
+.circulo {
+    width: 23px;
+    height: 29px;
+    border-radius: 50%;
+    background: #5b5d68;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /*margin: -14px auto;*/
+    padding: 6%;
+    font-size: 10px;
+    margin:auto;
+}
+
+
+/**
+ * Estilo noche para burbujas en vehiculos
+ */
+.dark-layout .circulo_success {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /*margin: -14px auto;*/
+    padding: 6%;
+    font-size: 10px;
+    margin:auto;
+}
+
+/**
+ * Estilo Día para burbujas en vehiculos
+ */
+.circulo_success {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /*margin: -14px auto;*/
+    padding: 6%;
+    font-size: 10px;
+    margin:auto;
+}
+
+
+/**
+ * Estilo noche para burbujas en vehiculos
+ */
+.dark-layout .circulo_danger {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: orange;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /*margin: -14px auto;*/
+    padding: 6%;
+    font-size: 10px;
+}
+
+/**
+ * Estilo Día para burbujas en vehiculos
+ */
+.circulo_danger {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: orange;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /*margin: -14px auto;*/
+    padding: 6%;
+    font-size: 10px;
+}
+
+/**
+ * Estilo noche para burbujas en vehiculos
+ */
+.dark-layout .circulo_warning {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #95950e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /*margin: -14px auto;*/
+    padding: 6%;
+    font-size: 10px;
+}
+
+/**
+ * Estilo Día para burbujas en vehiculos
+ */
+.circulo_warning {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #95950e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /*margin: -14px auto;*/
+    padding: 6%;
+    font-size: 10px;
+}
+
+
+.vehicle_bubble {
+    font-size: 10px;
+}
+
+.state_time .row {
+    margin: auto;
+}

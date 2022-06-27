@@ -1,0 +1,78 @@
+body.vertical-layout.vertical-menu-modern .main-menu {
+    width: 285px;
+}
+
+div .main-menu .menu-fixed .menu-accordion .menu-shadow .menu-dark .expanded {
+    width: 285px;
+}
+
+.tab_menu {
+    color: #fff !important;
+    margin: calc(2.2rem - 0.2rem) 0 0.8rem 2.2rem;
+    padding: 0;
+    line-height: 2.5;
+    letter-spacing: 0.01rem;
+    font-size: 16px;
+}
+
+
+.vehicle_info_ticket {
+    border-top: 1px dotted #f8f8fa !important;
+    padding: 0 !important;
+}
+
+
+.mx_icon {
+    margin: -37px auto;
+    z-index: 100;
+    position: relative;
+    margin-bottom: 17px;
+}
+
+.container {
+    width: 100%;
+    padding-right: 14px;
+    padding-left: 14px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: -25px;
+}
+
+.vs-progress--background {
+    width: 100% !important;
+    border-radius: 18px !important;
+    background-color: rgba(0, 0, 0, .06) !important;
+    z-index: 50 !important;
+    display: inline-block !important;
+    overflow: hidden !important;
+    margin-bottom: 30px !important;
+}
+
+div.phpdebugbar .hljs-keyword, div.phpdebugbar .css .rule .hljs-keyword, div.phpdebugbar .hljs-winutils, div.phpdebugbar .javascript .hljs-title, div.phpdebugbar .nginx .hljs-title, div.phpdebugbar .hljs-subst, div.phpdebugbar .hljs-request, div.phpdebugbar .hljs-status {
+    color: #333 !important;
+}
+
+.hljs-operator {
+    color: #000000 !important;
+}
+
+
+.modal-backdrop {
+    z-index: 1000;
+}
+
+.dark-layout a {
+    color: #15DB0F !important;
+}
+
+/* Fix Jquery con Vuejs en menus de cobertura */
+.dropdown-menu {
+    z-index: 300 !important;
+}
+
+
+/** Widget **/
+
+.vehicle_info_ticket {
+    font-size: 12px;
+}

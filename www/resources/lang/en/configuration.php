@@ -23,5 +23,15 @@
                 "new"  => "New",
                 "list" => "List",
             ],
+            "house" => [
+                "name" => "Houses",
+                "new"  => "New",
+                "list" => "List",
+            ],
+            "lawn" => [
+                "name" => "Lawn",
+                "new"  => "New",
+                "list" => "List",
+            ],
         ],
     ];

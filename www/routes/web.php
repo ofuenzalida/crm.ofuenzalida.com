@@ -1,7 +1,8 @@
 <?php
 
     use Illuminate\Support\Facades\Route;
-    use App\Http\Controllers\Home\HomeController;
+    use App\Http\Controllers\Dashboard\DashboardController;
+    use  App\Http\Controllers\Configuration\LanguageController;
 
     /*
     |--------------------------------------------------------------------------
@@ -14,32 +15,77 @@
     |
     */
 
-    Route::any("/", function()
+    Route::get('/', function()
     {
-        return redirect("/home");
+        return view('welcome');
     });
 
-    Route::group([
-        'prefix'     => 'home',
-        'namespace'  => 'Home',
-        'middleware' => [
-            'auth',
-        ],
-    ], function()
-    {
-        Route::get("/", [
-            HomeController::class,
-            'index',
-        ])
-             ->name("home");
-
-    });
-
+    /*
     Route::get('/dashboard', function()
     {
         return view('dashboard');
     })
          ->middleware(['auth'])
          ->name('dashboard');
+*/
+
+    Route::middleware([
+        'auth',
+        'language',
+    ])
+         ->namespace("Dashboard")
+         ->prefix("dashboard")
+         ->group(function()
+         {
+             Route::get("/", [
+                 DashboardController::class,
+                 'index',
+             ])
+                  ->middleware(["auth"])
+                  ->name("dashboard");
+
+         });
+
+    Route::middleware([
+        'auth',
+        'language',
+    ])
+         ->namespace("Configuration")
+         ->prefix("configuration")
+         ->group(function()
+         {
+             Route::get("/language/{language}", [
+                 LanguageController::class,
+                 'setLanguage',
+             ])
+                  ->middleware(["auth"])
+                  ->name("dashboard");
+
+         });
+
+
+    ///
+    /// URL:  /home
+    ///
+    /*
+    Route::group([
+        'prefix'     => 'dashboard',
+        'namespace'  => 'Dashboard',
+        'middleware' => [
+            'auth',
+        ],
+    ], function()
+    {
+
+        Route::get("/", [
+            DashboardController::class,
+            'index',
+        ])
+             ->middleware(["auth"])
+             ->name("dashboard");
+
+    });
+    */
+
 
     require __DIR__.'/auth.php';

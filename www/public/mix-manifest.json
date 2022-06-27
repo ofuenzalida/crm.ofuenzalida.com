@@ -1,8 +1,10 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
+    "/assets/css/map-tools.css": "/assets/css/map-tools.css",
+    "/assets/css/libs.css": "/assets/css/libs.css",
+    "/assets/js/map-tools.js": "/assets/js/map-tools.js",
+    "/assets/js/aztrack.js": "/assets/js/aztrack.js",
     "/assets/css/theme.css": "/assets/css/theme.css",
-    "/assets/css/theme-plugins.css": "/assets/css/theme-plugins.css",
-    "/assets/js/theme.js": "/assets/js/theme.js",
-    "/assets/js/theme-plugins.js": "/assets/js/theme-plugins.js"
+    "/assets/js/theme.js": "/assets/js/theme.js"
 }

@@ -1,0 +1,17 @@
+/* Barra de posicion superior */
+.header-navbar.fixed-top, .header-navbar.floating-nav
+{
+    left: 330px;
+}
+
+/* Searchbar color item */
+.pac-item-query
+{
+    color: #fff;
+}
+
+/* Container bar*/
+.pac-container
+{
+    background-color: #10163a !important;
+}
