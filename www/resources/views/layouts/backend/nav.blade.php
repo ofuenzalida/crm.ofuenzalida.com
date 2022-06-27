@@ -37,18 +37,27 @@
         </div>
         <ul class="nav navbar-nav align-items-center ms-auto">
             <li class="nav-item dropdown dropdown-language">
-                <a class="nav-link dropdown-toggle" id="dropdown-flag"
-                   href="#" data-bs-toggle="dropdown" aria-haspopup="true"
-                   aria-expanded="false">
-                    <i class="flag-icon flag-icon-us"></i>
-                    <span class="selected-language">English</span>
-                </a>
+                @if(auth::user()->user_lang == "en")
+                    <a class="nav-link dropdown-toggle" id="dropdown-flag"
+                       href="#" data-bs-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false">
+                        <i class="flag-icon flag-icon-us"></i>
+                        <span class="selected-language">English</span>
+                    </a>
+                @else
+                    <a class="nav-link dropdown-toggle" id="dropdown-flag"
+                       href="#" data-bs-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false">
+                        <i class="flag-icon flag-icon-es"></i>
+                        <span class="selected-language">Spanish</span>
+                    </a>
+                @endif
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-flag">
                     <a class="dropdown-item" href="{{ url("configuration/language/es") }}" data-language="es">
                         <i class="flag-icon flag-icon-es"></i> Spanish
                     </a>
                     <a class="dropdown-item" href="{{ url("configuration/language/en") }}" data-language="en">
-                        <i class="flag-icon flag-icon-eu"></i> English
+                        <i class="flag-icon flag-icon-us"></i> English
                     </a>
                 </div>
             </li>
