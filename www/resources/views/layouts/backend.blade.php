@@ -14,11 +14,11 @@
     <title>{{ config('app.name', 'Laravel') }} {{ (isset($title) ? $title : '') }}</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600"
           rel="stylesheet"/>
+    <link rel="stylesheet" href="{{ url('assets/css/datatables.css') }}"/>
     <link rel="stylesheet" href="{{ url('css/app.css') }}"/>
     <link rel="stylesheet" href="{{ url('assets/css/theme.css') }}"/>
     <link rel="stylesheet" href="{{ url('assets/css/theme-plugins.css') }}"/>
-    @yield("css")
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    @yield("styles")
 </head>
 <body class="vertical-layout vertical-menu-modern  navbar-floating footer-static  " data-open="click"
       data-menu="vertical-menu-modern" data-col="">
@@ -28,16 +28,17 @@
     <div class="content-overlay"></div>
     <div class="header-navbar-shadow"></div>
     <div class="content-wrapper container-xxl p-0">
-        <div class="content-header row">
-        </div>
+        @include("layouts.backend.breadcrumb")
         <div class="content-body">
             @yield("content")
         </div>
     </div>
 </div>
 @include("layouts.backend.footer")
-<script src="{{ asset('assets/js/theme.js') }}"></script>
-<script src="{{ asset('assets/js/theme-plugins.js') }}"></script>
+<script src="{{ url('assets/js/theme.js') }}"></script>
+<script src="{{ url('assets/js/datatables.js') }}"></script>
+<script src="{{ url('assets/js/theme-plugins.js') }}"></script>
+<script src="{{ asset('js/app.js') }}" defer></script>
 <script>
     $(window).on('load', function ()
     {

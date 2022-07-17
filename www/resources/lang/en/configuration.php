@@ -23,12 +23,17 @@
                 "new"  => "New",
                 "list" => "List",
             ],
-            "house" => [
-                "name" => "Houses",
+            "property" => [
+                "name" => "Properties",
                 "new"  => "New",
                 "list" => "List",
             ],
-            "lawn" => [
+            "office"   => [
+                "name" => "Office",
+                "new"  => "New",
+                "list" => "List",
+            ],
+            "lawn"     => [
                 "name" => "Lawn",
                 "new"  => "New",
                 "list" => "List",

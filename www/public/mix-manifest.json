@@ -3,8 +3,12 @@
     "/css/app.css": "/css/app.css",
     "/assets/css/map-tools.css": "/assets/css/map-tools.css",
     "/assets/css/libs.css": "/assets/css/libs.css",
+    "/assets/css/datatables.css": "/assets/css/datatables.css",
     "/assets/js/map-tools.js": "/assets/js/map-tools.js",
+    "/assets/js/datatables.js": "/assets/js/datatables.js",
     "/assets/js/aztrack.js": "/assets/js/aztrack.js",
     "/assets/css/theme.css": "/assets/css/theme.css",
-    "/assets/js/theme.js": "/assets/js/theme.js"
+    "/assets/css/theme-plugins.css": "/assets/css/theme-plugins.css",
+    "/assets/js/theme.js": "/assets/js/theme.js",
+    "/assets/js/theme-plugins.js": "/assets/js/theme-plugins.js"
 }

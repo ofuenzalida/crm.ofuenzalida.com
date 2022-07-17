@@ -4,7 +4,7 @@
         "name" => "Task",
         "menu" => [
             "name" => "Tasks",
-            "new"  => "New",
+            "create"  => "New",
             "list" => "List",
         ],
     ];

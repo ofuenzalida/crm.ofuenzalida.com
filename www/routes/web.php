@@ -2,7 +2,10 @@
 
     use Illuminate\Support\Facades\Route;
     use App\Http\Controllers\Dashboard\DashboardController;
-    use  App\Http\Controllers\Configuration\LanguageController;
+    use App\Http\Controllers\Configuration\LanguageController;
+    use App\Http\Controllers\Task\TaskController;
+    use App\Http\Controllers\Configuration\PropertyController;
+    use App\Http\Controllers\Configuration\OfficeController;
 
     /*
     |--------------------------------------------------------------------------
@@ -19,15 +22,6 @@
     {
         return view('welcome');
     });
-
-    /*
-    Route::get('/dashboard', function()
-    {
-        return view('dashboard');
-    })
-         ->middleware(['auth'])
-         ->name('dashboard');
-*/
 
     Route::middleware([
         'auth',
@@ -50,6 +44,13 @@
         'auth',
         'language',
     ])
+         ->namespace("Task")
+         ->resource("/task", TaskController::class);
+
+    Route::middleware([
+        'auth',
+        'language',
+    ])
          ->namespace("Configuration")
          ->prefix("configuration")
          ->group(function()
@@ -60,9 +61,16 @@
              ])
                   ->middleware(["auth"])
                   ->name("dashboard");
-
          });
 
+    ///
+    /// URL: /configuration/
+    ///
+    Route::resources([
+        "configuration/office"   => OfficeController::class,
+        "configuration/property" => PropertyController::class,
+        "configuration/asdf"     => PropertyController::class,
+    ]);
 
     ///
     /// URL:  /home

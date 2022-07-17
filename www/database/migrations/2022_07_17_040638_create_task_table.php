@@ -13,29 +13,32 @@
          */
         public function up()
         {
-            Schema::create('houses', function(Blueprint $table)
+            Schema::create('task', function(Blueprint $table)
             {
                 $table->id();
-                $table->string("name", 255);
-                $table->string("address", 255);
-                $table->string("latitude", 50);
-                $table->string("longitude", 50);
-                $table->text("polygon")
+                $table->integer("hour");
+                $table->integer("usd");
+                $table->boolean("paid")
+                      ->default(FALSE);
+                $table->date("date");
+                $table->text("description_work")
+                      ->nullable();
+                $table->text("description_tool")
                       ->nullable();
 
                 $table->bigInteger("users_id")
                       ->unsigned();
 
-                $table->bigInteger("offices_id")
+                $table->bigInteger("properties_id")
                       ->unsigned();
 
                 $table->foreign('users_id')
                       ->references('id')
                       ->on('users');
 
-                $table->foreign('offices_id')
+                $table->foreign('properties_id')
                       ->references('id')
-                      ->on('offices');
+                      ->on('properties');
 
                 $table->timestamps();
                 $table->softDeletes();
@@ -49,6 +52,6 @@
          */
         public function down()
         {
-            Schema::dropIfExists('houses');
+            Schema::dropIfExists('task');
         }
     };

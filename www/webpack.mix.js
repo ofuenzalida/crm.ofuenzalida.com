@@ -52,6 +52,13 @@ mix.styles([
                'resources/css/libs/extensions/toastr.css',
            ], 'public/assets/css/libs.css')
 
+mix.styles([
+               'resources/theme-vuexy/app-assets/vendors/css/tables/datatable/dataTables.bootstrap5.min.css',
+               'resources/theme-vuexy/app-assets/vendors/css/tables/datatable/responsive.bootstrap5.min.css',
+               'resources/theme-vuexy/app-assets/vendors/css/tables/datatable/buttons.bootstrap5.min.css',
+               'resources/theme-vuexy/app-assets/vendors/css/tables/datatable/rowGroup.bootstrap5.min.css',
+           ], 'public/assets/css/datatables.css');
+
 
 mix.scripts(
     [
@@ -64,6 +71,20 @@ mix.scripts(
     ], 'public/assets/js/map-tools.js'
 );
 
+mix.scripts([
+                'resources/theme-vuexy/app-assets/vendors/js/tables/datatable/jquery.dataTables.min.js',
+                'resources/theme-vuexy/app-assets/vendors/js/tables/datatable/dataTables.bootstrap5.min.js',
+                'resources/theme-vuexy/app-assets/vendors/js/tables/datatable/dataTables.responsive.min.js',
+                'resources/theme-vuexy/app-assets/vendors/js/tables/datatable/responsive.bootstrap5.min.js',
+                'resources/theme-vuexy/app-assets/vendors/js/tables/datatable/datatables.checkboxes.min.js',
+                'resources/theme-vuexy/app-assets/vendors/js/tables/datatable/datatables.buttons.min.js',
+                'resources/theme-vuexy/app-assets/vendors/js/tables/datatable/jszip.min.js',
+                'resources/theme-vuexy/app-assets/vendors/js/tables/datatable/pdfmake.min.js',
+                'resources/theme-vuexy/app-assets/vendors/js/tables/datatable/vfs_fonts.js',
+                'resources/theme-vuexy/app-assets/vendors/js/tables/datatable/buttons.html5.min.js',
+                'resources/theme-vuexy/app-assets/vendors/js/tables/datatable/buttons.print.min.js',
+                'resources/theme-vuexy/app-assets/vendors/js/tables/datatable/dataTables.rowGroup.min.js',
+            ], 'public/assets/js/datatables.js');
 
 mix.scripts(
     [
@@ -95,30 +116,10 @@ mix.scripts(
 
 
 mix.styles([
-               /*
-                'resources/theme-vuexy/app-assets/vendors/css/vendors.min.css',
-                'resources/theme-vuexy/app-assets/vendors/css/forms/select/select2.min.css',
-                'resources/theme-vuexy/app-assets/vendors/css/pickers/pickadate/pickadate.css',
-                'resources/theme-vuexy/app-assets/vendors/css/pickers/flatpickr/flatpickr.min.css',
-                'resources/theme-vuexy/app-assets/vendors/css/charts/apexcharts.css',
-                'resources/theme-vuexy/app-assets/vendors/css/extensions/toastr.min.css',
-                'resources/theme-vuexy/app-assets/css/bootstrap.css',
-                'resources/theme-vuexy/app-assets/css/bootstrap-extended.css',
-                'resources/theme-vuexy/app-assets/css/colors.css',
-                'resources/theme-vuexy/app-assets/css/components.css',
-                'resources/theme-vuexy/app-assets/css/themes/dark-layout.css',
-                'resources/theme-vuexy/app-assets/css/themes/bordered-layout.css',
-                'resources/theme-vuexy/app-assets/css/themes/semi-dark-layout.css',
-                'resources/theme-vuexy/app-assets/css/core/menu/menu-types/vertical-menu.css',
-                'resources/theme-vuexy/app-assets/css/pages/dashboard-ecommerce.css',
-                'resources/theme-vuexy/app-assets/css/plugins/charts/chart-apex.css',
-                'resources/theme-vuexy/app-assets/css/plugins/extensions/ext-component-toastr.css',
-                'resources/theme-vuexy/app-assets/css/plugins/forms/pickers/form-flat-pickr.css',
-                'resources/theme-vuexy/app-assets/css/plugins/forms/pickers/form-pickadate.css',
-                'resources/theme-vuexy/assets/css/style.css',
-                */
-
                'resources/theme-vuexy/app-assets/vendors/css/vendors.min.css',
+           ], 'public/assets/css/theme.css');
+
+mix.styles([
                'resources/theme-vuexy/app-assets/vendors/css/charts/apexcharts.css',
                'resources/theme-vuexy/app-assets/vendors/css/extensions/toastr.min.css',
                'resources/theme-vuexy/app-assets/css/bootstrap.css',
@@ -132,34 +133,26 @@ mix.styles([
                'resources/theme-vuexy/app-assets/css/pages/dashboard-ecommerce.css',
                'resources/theme-vuexy/app-assets/css/plugins/charts/chart-apex.css',
                'resources/theme-vuexy/app-assets/css/plugins/extensions/ext-component-toastr.css',
-           ], 'public/assets/css/theme.css');
+               'resources/theme-vuexy/app-assets/vendors/css/pickers/flatpickr/flatpickr.min.css',
+               'resources/theme-vuexy/app-assets/vendors/css/forms/spinner/jquery.bootstrap-touchspin.css',
+               'resources/theme-vuexy/app-assets/vendors/css/forms/select/select2.min.css'
+           ], 'public/assets/css/theme-plugins.css');
 
 mix.scripts(
     [
-        /*
-         'resources/theme-vuexy/app-assets/vendors/js/vendors.min.js',
-         ///'resources/theme-vuexy/app-assets/vendors/js/charts/apexcharts.min.js',
-         'resources/theme-vuexy/app-assets/vendors/js/extensions/toastr.min.js',
-         ///'resources/theme-vuexy/app-assets/js/scripts/pages/dashboard-ecommerce.js',
-         ///'resources/theme-vuexy/app-assets/js/scripts/components/components-collapse.js',
-         'resources/theme-vuexy/app-assets/vendors/js/pickers/pickadate/picker.js',
-         'resources/theme-vuexy/app-assets/vendors/js/pickers/pickadate/picker.date.js',
-         'resources/theme-vuexy/app-assets/vendors/js/pickers/pickadate/picker.time.js',
-         'resources/theme-vuexy/app-assets/vendors/js/pickers/pickadate/legacy.js',
-         'resources/theme-vuexy/app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js',
-         ///Ejemplo de uso de Pickers
-         ///'resources/theme-vuexy/app-assets/js/scripts/forms/pickers/form-pickers.js',
-         'resources/theme-vuexy/app-assets/vendors/js/forms/select/select2.full.min.js',
-         'resources/theme-vuexy/app-assets/js/core/app-menu.js',
-         'resources/theme-vuexy/app-assets/js/core/app.js',
-         'resources/theme-vuexy/app-assets/js/scripts/forms/form-select2.js'
-         */
         'resources/theme-vuexy/app-assets/vendors/js/vendors.min.js',
+    ], 'public/assets/js/theme.js'
+);
+
+
+mix.scripts(
+    [
         'resources/theme-vuexy/app-assets/vendors/js/charts/apexcharts.min.js',
         'resources/theme-vuexy/app-assets/vendors/js/extensions/toastr.min.js',
         'resources/theme-vuexy/app-assets/js/core/app-menu.js',
         'resources/theme-vuexy/app-assets/js/core/app.js',
-        ///'resources/theme-vuexy/app-assets/js/scripts/pages/dashboard-ecommerce.js',
-    ], 'public/assets/js/theme.js'
+        'resources/theme-vuexy/app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js',
+        'resources/theme-vuexy/app-assets/vendors/js/forms/select/select2.full.min.js',
+        'resources/theme-vuexy/app-assets/vendors/js/forms/validation/jquery.validate.min.js'
+    ], 'public/assets/js/theme-plugins.js'
 );
-

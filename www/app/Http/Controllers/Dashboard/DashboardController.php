@@ -12,6 +12,6 @@
 
         public function index()
         {
-            return View("dashboard/index");
+            return View("dashboard.index");
         }
     }

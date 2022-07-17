@@ -23,8 +23,13 @@
                 "new"  => "Nuevo",
                 "list" => "Listado",
             ],
-            "house"    => [
+            "property" => [
                 "name" => "Casas",
+                "new"  => "Nueva",
+                "list" => "Listado",
+            ],
+            "office"   => [
+                "name" => "Oficina",
                 "new"  => "Nueva",
                 "list" => "Listado",
             ],

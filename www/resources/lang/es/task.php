@@ -4,7 +4,7 @@
         "name" => "Tarea",
         "menu" => [
             "name" => "Tareas",
-            "new"  => "Nueva",
+            "create"  => "Nueva",
             "list" => "Listado",
         ],
     ];
