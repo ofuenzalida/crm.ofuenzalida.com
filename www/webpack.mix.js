@@ -135,7 +135,10 @@ mix.styles([
                'resources/theme-vuexy/app-assets/css/plugins/extensions/ext-component-toastr.css',
                'resources/theme-vuexy/app-assets/vendors/css/pickers/flatpickr/flatpickr.min.css',
                'resources/theme-vuexy/app-assets/vendors/css/forms/spinner/jquery.bootstrap-touchspin.css',
-               'resources/theme-vuexy/app-assets/vendors/css/forms/select/select2.min.css'
+               'resources/theme-vuexy/app-assets/vendors/css/forms/select/select2.min.css',
+               'resources/theme-vuexy/app-assets/vendors/css/pickers/pickadate/pickadate.css',
+               'resources/theme-vuexy/app-assets/css/plugins/forms/pickers/form-flat-pickr.css',
+               'resources/theme-vuexy/app-assets/css/plugins/forms/pickers/form-pickadate.css'
            ], 'public/assets/css/theme-plugins.css');
 
 mix.scripts(

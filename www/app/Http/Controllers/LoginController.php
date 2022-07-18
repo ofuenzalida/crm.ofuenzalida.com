@@ -54,7 +54,7 @@
             App::setLocale($this->user->user_lang ?? "en");
         }
 
-        public function loadData()
+        public function loadData(): void
         {
             View::share('user', $this->user);
             View::share('request', $this->data);

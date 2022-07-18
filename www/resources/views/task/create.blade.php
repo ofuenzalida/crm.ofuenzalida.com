@@ -21,7 +21,7 @@
                                             required>
                                         <option value="">Select Option...</option>
                                         @foreach($properties as $p)
-                                            <option value="{{ $p->id }}">{{ $p->name }} | {{ $p->address }}</option>
+                                            <option value="{{ $p->id }}" @if(old("properties_id") == $p->id) {{ "selected=selected" }} @endif>{{ $p->name }} | {{ $p->address }}</option>
                                         @endforeach
                                     </select>
                                     <div class="valid-tooltip">Looks good!</div>
@@ -64,7 +64,7 @@
                                         <textarea data-length="1000" class="form-control char-textarea"
                                                   id="textarea-counter" rows="5" placeholder="Description Jobs..."
                                                   name="description_work"
-                                                  style="height: 200px"></textarea>
+                                                  style="height: 200px" required></textarea>
                                         <label for="textarea-counter">Description Work</label>
                                     </div>
                                     <small class="textarea-counter-value float-end">

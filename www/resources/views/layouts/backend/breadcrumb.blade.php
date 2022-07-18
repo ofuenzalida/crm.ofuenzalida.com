@@ -1,11 +1,13 @@
 <div class="content-header row">
     @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
+        <div class="content-header-left col-12">
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
         </div>
     @endif
     @if(isset($breadcrumbs) && count($breadcrumbs) > 0 && is_array($breadcrumbs))
