@@ -12,7 +12,8 @@
 
                         </p>
                         <form action="{{ url("task/".$task->id) }}" class="needs-validation" novalidate
-                              method="PUT">
+                              method="POST">
+                            {{ method_field('PUT') }}
                             {{ csrf_field() }}
                             <div class="row g-1">
                                 <div class="col-md-12 col-12 mb-3 position-relative">

@@ -135,7 +135,7 @@
 
             $this->loadData();
 
-            $properties = Property::orderBy('name')
+            $properties = Property::orderBy('address')
                                   ->get();
 
             return View("task.edit")
