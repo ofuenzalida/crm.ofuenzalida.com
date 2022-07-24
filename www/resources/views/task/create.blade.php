@@ -17,11 +17,13 @@
                             <div class="row g-1">
                                 <div class="col-md-12 col-12 mb-3 position-relative">
                                     <label class="form-label" for="properties_id">Property</label>
-                                    <select class="form-select" id="properties_id" name="properties_id"
+                                    <select class="select2 form-select" id="default-select" name="properties_id"
                                             required>
                                         <option value="">Select Option...</option>
                                         @foreach($properties as $p)
-                                            <option value="{{ $p->id }}" @if(old("properties_id") == $p->id) {{ "selected=selected" }} @endif>{{ $p->name }} | {{ $p->address }}</option>
+                                            <option value="{{ $p->id }}" @if(old("properties_id") == $p->id)
+                                                {!! "selected" !!}
+                                                    @endif>{{ $p->name }} | {{ $p->address }}</option>
                                         @endforeach
                                     </select>
                                     <div class="valid-tooltip">Looks good!</div>
@@ -83,13 +85,10 @@
                             </div>
                             <div class="row g-1">
                                 <div class="col-12">
-                                    <div id="floating-panel"></div>
-                                    <div id="map-canvas"></div>
-                                    <input type="hidden" name="polygon" id="polygon" class="col-12" value=""/>
                                     <br/>
+                                    <button class="btn btn-primary" type="submit">Submit</button>
                                 </div>
                             </div>
-                            <button class="btn btn-primary" type="submit">Submit</button>
                         </form>
                     </div>
                 </div>

@@ -18,6 +18,7 @@
                                 <th>USD</th>
                                 <th>Total</th>
                                 <th>Property</th>
+                                <th>Action</th>
                             </tr>
                             </thead>
                             <tfoot>
@@ -28,6 +29,7 @@
                                 <th>USD</th>
                                 <th>Total</th>
                                 <th>Property</th>
+                                <th>Action</th>
                             </tr>
                             </tfoot>
                             <tbody>
@@ -40,6 +42,21 @@
                                         <td>{{ $t->usd }}</td>
                                         <td>{{ ($t->hour * $t->usd) }}</td>
                                         <td>{{ $t->property->name }}</td>
+                                        <td>
+                                            <a href="{{ url("task/".$t->id."/edit") }}" type="button"
+                                               class="btn btn-outline-primary mr-1 mb-1 waves-effect waves-light btn-href">
+                                                <i class="feather icon-edit"></i> Editar
+                                            </a>
+                                            <br/>
+                                            <form method="DELETE" class="form form-vertical" id="form edit_user"
+                                                  name="form_statusproy" action="{{ url("task/".$t->id) }}">
+                                                @csrf
+                                                <button type="submit"
+                                                        class="btn btn-outline-primary mr-1 mb-1 waves-effect waves-light">
+                                                    <i class="feather icon-trash"></i> Eliminar
+                                                </button>
+                                            </form>
+                                        </td>
                                     </tr>
                                 @endforeach
                             @endif
