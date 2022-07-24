@@ -3,6 +3,56 @@
 @section("content")
     <section id="responsive-datatable">
         <div class="row">
+            <div class="offset-3 col-3">
+                <div class="card text-center">
+                    <div class="card-body d-flex align-items-center justify-content-between">
+                        <div>
+                            <h3 class="fw-bolder mb-75">
+                                <?php
+                                $total_paid_ok = 0;
+                                foreach($task_paid_ok as $tpok)
+                                {
+                                    $total_paid_ok += ($tpok->hour * $tpok->usd);
+                                }
+                                ?>
+                                {{ number_format($total_paid_ok) }}
+                            </h3>
+                            <span>Paid</span>
+                        </div>
+                        <div class="avatar bg-light-success p-50">
+                                        <span class="avatar-content">
+                                            <i data-feather="award" class="font-medium-4"></i>
+                                        </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card text-center">
+                    <div class="card-body d-flex align-items-center justify-content-between">
+                        <div>
+                            <h3 class="fw-bolder mb-75">
+                                <?php
+                                $total_paid_nok = 0;
+                                foreach($task_paid_nok as $tpnok)
+                                {
+                                    $total_paid_nok += ($tpnok->hour * $tpnok->usd);
+                                }
+                                ?>
+                                {{ number_format($total_paid_nok) }}
+                            </h3>
+                            <span>No Paid</span>
+                        </div>
+                        <div class="avatar bg-light-warning p-50">
+                                        <span class="avatar-content">
+                                            <i data-feather="award" class="font-medium-4"></i>
+                                        </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header border-bottom">

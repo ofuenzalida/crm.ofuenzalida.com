@@ -35,7 +35,19 @@
 
             $tasks = Task::all();
 
-            return View("task.index")->with("tasks", $tasks);
+            $task_paid_ok = Task::where("users_id", Auth::user()->id)
+                                ->where("paid", TRUE)
+                                ->get();
+
+            $task_paid_nok = Task::where("users_id", Auth::user()->id)
+                                 ->where("paid", FALSE)
+                                 ->get();
+
+
+            return View("task.index")
+                ->with("tasks", $tasks)
+                ->with("task_paid_ok", $task_paid_ok)
+                ->with("task_paid_nok", $task_paid_nok);
         }
 
         /**
