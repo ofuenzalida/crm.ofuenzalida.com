@@ -122,14 +122,6 @@ mix.styles([
 mix.styles([
                'resources/theme-vuexy/app-assets/vendors/css/charts/apexcharts.css',
                'resources/theme-vuexy/app-assets/vendors/css/extensions/toastr.min.css',
-               'resources/theme-vuexy/app-assets/css/bootstrap.css',
-               'resources/theme-vuexy/app-assets/css/bootstrap-extended.css',
-               'resources/theme-vuexy/app-assets/css/colors.css',
-               'resources/theme-vuexy/app-assets/css/components.css',
-               'resources/theme-vuexy/app-assets/css/themes/dark-layout.css',
-               'resources/theme-vuexy/app-assets/css/themes/bordered-layout.css',
-               'resources/theme-vuexy/app-assets/css/themes/semi-dark-layout.css',
-               'resources/theme-vuexy/app-assets/css/core/menu/menu-types/vertical-menu.css',
                'resources/theme-vuexy/app-assets/css/pages/dashboard-ecommerce.css',
                'resources/theme-vuexy/app-assets/css/plugins/charts/chart-apex.css',
                'resources/theme-vuexy/app-assets/css/plugins/extensions/ext-component-toastr.css',
@@ -138,7 +130,15 @@ mix.styles([
                'resources/theme-vuexy/app-assets/vendors/css/forms/select/select2.min.css',
                'resources/theme-vuexy/app-assets/vendors/css/pickers/pickadate/pickadate.css',
                'resources/theme-vuexy/app-assets/css/plugins/forms/pickers/form-flat-pickr.css',
-               'resources/theme-vuexy/app-assets/css/plugins/forms/pickers/form-pickadate.css'
+               'resources/theme-vuexy/app-assets/css/plugins/forms/pickers/form-pickadate.css',
+               'resources/theme-vuexy/app-assets/css/bootstrap.css',
+               'resources/theme-vuexy/app-assets/css/bootstrap-extended.css',
+               'resources/theme-vuexy/app-assets/css/colors.css',
+               'resources/theme-vuexy/app-assets/css/components.css',
+               'resources/theme-vuexy/app-assets/css/themes/dark-layout.css',
+               'resources/theme-vuexy/app-assets/css/themes/bordered-layout.css',
+               'resources/theme-vuexy/app-assets/css/themes/semi-dark-layout.css',
+               'resources/theme-vuexy/app-assets/css/core/menu/menu-types/vertical-menu.css'
            ], 'public/assets/css/theme-plugins.css');
 
 mix.scripts(
@@ -156,6 +156,7 @@ mix.scripts(
         'resources/theme-vuexy/app-assets/js/core/app.js',
         'resources/theme-vuexy/app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js',
         'resources/theme-vuexy/app-assets/vendors/js/forms/select/select2.full.min.js',
+        'resources/theme-vuexy/app-assets/js/scripts/forms/form-select2.js',
         'resources/theme-vuexy/app-assets/vendors/js/forms/validation/jquery.validate.min.js'
     ], 'public/assets/js/theme-plugins.js'
 );

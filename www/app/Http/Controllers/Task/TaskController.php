@@ -116,7 +116,32 @@
          */
         public function edit($id)
         {
-            //
+            $task = Task::find($id);
+
+            $this->title       = "Task Edit";
+            $this->menu_active = "task_create";
+            $this->new_title   = "Task Edit";
+            $this->breadcrumbs = [
+                [
+                    'name' => 'Task',
+                    'url'  => url('task'),
+                ],
+                [
+                    'name'   => 'Task',
+                    'url'    => url('task/').$id."/edit",
+                    'active' => TRUE,
+                ],
+            ];
+
+            $this->loadData();
+
+            $properties = Property::orderBy('name')
+                                  ->get();
+
+            return View("task.edit")
+                ->with("properties", $properties)
+                ->with("task", $task);
+
         }
 
         /**
@@ -129,7 +154,27 @@
          */
         public function update(Request $request, $id)
         {
-            //
+            $validated = $request->validate([
+                'hour'             => 'required',
+                'usd'              => 'required',
+                'date'             => 'required',
+                'description_work' => 'required',
+                ///'description_tool' => 'required',
+                'properties_id'    => 'required',
+            ]);
+
+            $task                   = Task::find($id);
+            $task->hour             = $request->hour;
+            $task->usd              = $request->usd;
+            $task->description_work = $request->description_work;
+            $task->description_tool = $request->description_tool;
+            $task->date             = $request->date;
+            $task->paid             = ($request->paid == "on" ? TRUE : FALSE);
+            $task->users_id         = Auth::user()->id;
+            $task->properties_id    = $request->properties_id;
+            $task->save();
+
+            return redirect('task');
         }
 
         /**

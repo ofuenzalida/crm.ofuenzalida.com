@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="{{ url('assets/css/theme-plugins.css') }}"/>
     @yield("styles")
 </head>
-<body class="vertical-layout vertical-menu-modern  navbar-floating footer-static  " data-open="click"
+<body class="vertical-layout vertical-menu-modern  navbar-floating footer-static" data-open="click"
       data-menu="vertical-menu-modern" data-col="">
 @include("layouts.backend.nav")
 @include("layouts.backend.menu")
