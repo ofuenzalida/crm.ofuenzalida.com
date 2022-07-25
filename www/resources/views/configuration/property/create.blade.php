@@ -42,7 +42,7 @@
                                     <select class="form-control" id="offices_id" name="offices_id"
                                             required>
                                         <option value="">Select Option...</option>
-                                    @foreach($offices as $o)
+                                        @foreach($offices as $o)
                                             <option value="{{ $o->id }}">{{ $o->name }}</option>
                                         @endforeach
                                     </select>
@@ -62,6 +62,46 @@
                                            placeholder="Address..." value="{{ old("address") }}" required/>
                                     <div class="valid-tooltip">Looks good!</div>
                                 </div>
+                            </div>
+                            <div class="row g-1">
+                                <div class="col-md-4">
+                                    <div class="d-flex flex-column">
+                                        <label class="form-check-label mb-50" for="has_lawn">Has Lawn</label>
+                                        <div class="form-check form-switch form-check-success">
+                                            <input type="checkbox" class="form-check-input" id="has_lawn"/>
+                                            <label class="form-check-label" for="has_lawn">
+                                                <span class="switch-icon-left"><i data-feather="check"></i></span>
+                                                <span class="switch-icon-right"><i data-feather="x"></i></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="d-flex flex-column">
+                                        <label class="form-check-label mb-50" for="has_sprinkles">Has Sprinkles</label>
+                                        <div class="form-check form-switch form-check-success">
+                                            <input type="checkbox" class="form-check-input" id="has_sprinkles"/>
+                                            <label class="form-check-label" for="has_sprinkles">
+                                                <span class="switch-icon-left"><i data-feather="check"></i></span>
+                                                <span class="switch-icon-right"><i data-feather="x"></i></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="d-flex flex-column">
+                                        <label class="form-check-label mb-50" for="has_apartments">Has
+                                            Apartments</label>
+                                        <div class="form-check form-switch form-check-success">
+                                            <input type="checkbox" class="form-check-input" id="has_apartments"/>
+                                            <label class="form-check-label" for="has_apartments">
+                                                <span class="switch-icon-left"><i data-feather="check"></i></span>
+                                                <span class="switch-icon-right"><i data-feather="x"></i></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br/>
                             </div>
                             <div class="row g-1">
                                 <div class="col-md-6 col-12 mb-3 position-relative">

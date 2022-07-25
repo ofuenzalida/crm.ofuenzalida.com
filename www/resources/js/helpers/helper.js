@@ -165,7 +165,8 @@ function dd()
         return;
     }
 
-    if (isDebugInfo) {
+    if (isDebugInfo)
+    {
         console.log(arguments);//isDebugInfo
     }
 }
@@ -204,7 +205,8 @@ var ajax = function (id_html, method, json)
                },
                error: function (data)
                {
-                   if (isDebugInfo) {
+                   if (isDebugInfo)
+                   {
                        console.log('Error:', data);//isDebugInfo
                    }
                    $('#saveBtn').html('Save Changes');
@@ -630,87 +632,107 @@ if ($(".btn-href").length > 0)
 {
     $(".btn-href").on("click", function ()
     {
-        asdf.loadingOpen();
         window.location.href = $(this).attr("btn-href");
     });
 }
 
 /**
-*
-*  Remenber.js / Grupo de funciones para recordar inicio de sesion de usuarios
-**/
+ *
+ *  Remenber.js / Grupo de funciones para recordar inicio de sesion de usuarios
+ **/
 
 
 /**
-*  convertBinary / funcion que convierte string a codigo binario y viceversa
-**/
-function convertBinary(o,string)
+ *  convertBinary / funcion que convierte string a codigo binario y viceversa
+ **/
+function convertBinary(o, string)
 {
-	let out = "";
-	if (o == "true") string = string.split(' ');
+    let out = "";
+    if (o == "true")
+    {
+        string = string.split(' ');
+    }
     if (string !== undefined)
-    {    
-    	for (var i = 0; i < string.length; i++)
-    	{
-    	    if (o == "false") out += string[i].charCodeAt(0).toString(2) + ' ';
-    	    if (o == "true")  out += String.fromCharCode(parseInt(string[i], 2));
-    	}
-    }    
-	return out;
+    {
+        for (var i = 0; i < string.length; i++)
+        {
+            if (o == "false")
+            {
+                out += string[i].charCodeAt(0).toString(2) + ' ';
+            }
+            if (o == "true")
+            {
+                out += String.fromCharCode(parseInt(string[i], 2));
+            }
+        }
+    }
+    return out;
 }
 
 /**
-*  resetInputLogin / funcion que limpia los input de email y contraseña del login
-**/
+ *  resetInputLogin / funcion que limpia los input de email y contraseña del login
+ **/
 function resetInputLogin()
 {
-	document.getElementById('email').value = "";
-	document.getElementById('password').value = "";
-	$('#customCheck1').prop('checked', false);
+    document.getElementById('email').value = "";
+    document.getElementById('password').value = "";
+    $('#customCheck1').prop('checked', false);
 }
 
 /**
-*  saveLocal / funcion que graba los registros de inicio de sesion en LocalStore
-**/
+ *  saveLocal / funcion que graba los registros de inicio de sesion en LocalStore
+ **/
 function saveLocal(o)
 {
-	let email = $('#email').val();
-	let passw = convertBinary("false",$('#password').val());
-	if (email == "" && passw == "" && o != "true") resetInputLogin();
-	localStorage.setItem("email",email);
-    localStorage.setItem("password",passw);
-    localStorage.setItem("customCheck1",o);
+    let email = $('#email').val();
+    let passw = convertBinary("false", $('#password').val());
+    if (email == "" && passw == "" && o != "true")
+    {
+        resetInputLogin();
+    }
+    localStorage.setItem("email", email);
+    localStorage.setItem("password", passw);
+    localStorage.setItem("customCheck1", o);
 }
 
 /**
-*  rememberMe / funcion principal para renococer y ver si corresponde la opciòn Recuerdame
-*
-**/
+ *  rememberMe / funcion principal para renococer y ver si corresponde la opciòn Recuerdame
+ *
+ **/
 function rememberMe()
 {
-	let email = $('#email').val();
-	let passw = $('#password').val();
-	if ($('#customCheck1').is(":checked"))
-	{
-		saveLocal("true");
-	}
-	else saveLocal("false");
+    let email = $('#email').val();
+    let passw = $('#password').val();
+    if ($('#customCheck1').is(":checked"))
+    {
+        saveLocal("true");
+    }
+    else
+    {
+        saveLocal("false");
+    }
 }
 
 /**
-*  ready / funcion jquery que se encarga de ejecutar todo lo relacionado con opciòn Recuerdame
-**/
-$(document).ready(function()
-{
-	if (localStorage.getItem("customCheck1") == "true")
-	{
-		$('#customCheck1').prop('checked', true);
-	    $('#email').val(localStorage.getItem("email"));
-	    let passw = convertBinary("true",localStorage.getItem("password"));
-	    $('#password').val(passw);
-	}
-	else saveLocal("false");
-	$("#customCheck1").on("click", function() { rememberMe(); });
-});
+ *  ready / funcion jquery que se encarga de ejecutar todo lo relacionado con opciòn Recuerdame
+ **/
+$(document).ready(function ()
+                  {
+                      if (localStorage.getItem("customCheck1") == "true")
+                      {
+                          $('#customCheck1').prop('checked', true);
+                          $('#email').val(localStorage.getItem("email"));
+                          let passw = convertBinary("true", localStorage.getItem("password"));
+                          $('#password').val(passw);
+                      }
+                      else
+                      {
+                          saveLocal("false");
+                      }
+                      $("#customCheck1").on("click", function ()
+                      {
+                          rememberMe();
+                      });
+                  });
 
 

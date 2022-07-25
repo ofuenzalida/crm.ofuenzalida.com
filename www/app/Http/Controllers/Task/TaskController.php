@@ -240,7 +240,7 @@
                     'url'  => url('task'),
                 ],
                 [
-                    'name'   => 'Paid',
+                    'name'   => 'Unpaid',
                     'url'    => url('task/unpaid'),
                     'active' => TRUE,
                 ],

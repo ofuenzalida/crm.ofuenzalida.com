@@ -89,25 +89,7 @@ mix.scripts([
 mix.scripts(
     [
         'resources/js/helpers/helper.js',
-        'resources/js/controller/map.js',
-        'resources/js/controller/alert.js',
-        'resources/js/controller/popup.js',
-        'resources/js/controller/vehicle.js',
-        'resources/js/controller/vehicleRent.js',
-        'resources/js/controller/vehicleBulk.js',
-        'resources/js/controller/vehicleGeneral.js',
-        'resources/js/controller/plant.js',
-        'resources/js/controller/job.js',
-        'resources/js/controller/coverage.js',
-        'resources/js/controller/workshop.js',
-        'resources/js/controller/ticket.js',
-        'resources/js/controller/sos.js',
-        'resources/js/controller/app.js',
-        'resources/js/controller/azmap.js',
-        'resources/js/controller/serviceWorksheet.js',
-        'resources/js/controller/controlling.js',
-        'resources/js/controller/cpadminDashboard.js',
-    ], 'public/assets/js/aztrack.js'
+    ], 'public/assets/js/lib.js'
 );
 
 /**

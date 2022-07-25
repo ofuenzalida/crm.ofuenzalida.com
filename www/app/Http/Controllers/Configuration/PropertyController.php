@@ -37,6 +37,7 @@
             $this->loadData();
 
             $properties = Property::all();
+            $offices    = Office::all();
 
             return View("configuration.property.index")->with("properties", $properties);
         }
@@ -88,14 +89,17 @@
                 'polygon'    => 'required',
             ]);
 
-            $property             = new Property();
-            $property->name       = $request->name;
-            $property->address    = $request->address;
-            $property->latitude   = $request->latitude;
-            $property->longitude  = $request->longitude;
-            $property->polygon    = $request->polygon;
-            $property->users_id   = Auth::user()->id;
-            $property->offices_id = $request->offices_id;
+            $property                 = new Property();
+            $property->name           = $request->name;
+            $property->address        = $request->address;
+            $property->latitude       = $request->latitude;
+            $property->longitude      = $request->longitude;
+            $property->polygon        = $request->polygon;
+            $property->users_id       = Auth::user()->id;
+            $property->offices_id     = $request->offices_id;
+            $property->has_lawn       = ($request->has_lawn == "on" ? TRUE : FALSE);
+            $property->has_sprinklers = ($request->has_sprinklers == "on" ? TRUE : FALSE);
+            $property->has_apartments = ($request->has_apartments == "on" ? TRUE : FALSE);
             $property->save();
 
             return redirect('configuration/property');
@@ -122,7 +126,37 @@
          */
         public function edit($id)
         {
-            //
+
+            $property = Property::find($id);
+
+            $this->title       = "Property Edit";
+            $this->menu_active = "property_list";
+            $this->new_title   = "New Property";
+            $this->new_url     = url("configuration/property/create");
+            $this->breadcrumbs = [
+                [
+                    'name' => 'Configuration',
+                    'url'  => url('configuration'),
+                ],
+                [
+                    'name' => 'Property',
+                    'url'  => url('configuration/property'),
+                ],
+                [
+                    'name'   => 'Edit',
+                    'url'    => url('configuration/property/'.$id."/edit"),
+                    'active' => TRUE,
+                ],
+            ];
+            $this->loadData();
+
+            $properties = Property::all();
+            $offices    = Office::all();
+
+            return View("configuration.property.edit")
+                ->with("properties", $properties)
+                ->with("property", $property)
+                ->with("offices", $offices);
         }
 
         /**
@@ -135,7 +169,29 @@
          */
         public function update(Request $request, $id)
         {
-            //
+            $validated = $request->validate([
+                'offices_id' => 'required',
+                'name'       => 'required',
+                'address'    => 'required',
+                'latitude'   => 'required',
+                'longitude'  => 'required',
+                'polygon'    => 'required',
+            ]);
+
+            $property                 = Property::find($id);
+            $property->name           = $request->name;
+            $property->address        = $request->address;
+            $property->latitude       = $request->latitude;
+            $property->longitude      = $request->longitude;
+            $property->polygon        = $request->polygon;
+            $property->users_id       = Auth::user()->id;
+            $property->offices_id     = $request->offices_id;
+            $property->has_lawn       = ($request->has_lawn == "on" ? TRUE : FALSE);
+            $property->has_sprinklers = ($request->has_sprinklers == "on" ? TRUE : FALSE);
+            $property->has_apartments = ($request->has_apartments == "on" ? TRUE : FALSE);
+            $property->save();
+
+            return redirect('configuration/property')->with('success', 'Item updated successfully!');
         }
 
         /**

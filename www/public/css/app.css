@@ -763,11 +763,11 @@ select {
 .mt-3 {
   margin-top: 0.75rem;
 }
-.mt-6 {
-  margin-top: 1.5rem;
-}
 .mr-1 {
   margin-right: 0.25rem;
+}
+.mt-6 {
+  margin-top: 1.5rem;
 }
 .ml-1 {
   margin-left: 0.25rem;

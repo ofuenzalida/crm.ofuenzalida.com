@@ -18,7 +18,7 @@
                                     ?>
                                     {{ number_format($total_paid_nok) }}
                                 </h3>
-                                <span>Paid</span>
+                                <span>No Paid</span>
                             </div>
                             <div class="avatar bg-light-success p-50">
                                         <span class="avatar-content">

@@ -97,19 +97,22 @@
                                         <td>{{ ($t->hour * $t->usd) }}</td>
                                         <td>{{ $t->property->name }}</td>
                                         <td>
-                                            <a href="{{ url("task/".$t->id."/edit") }}" type="button"
-                                               class="btn btn-outline-primary mr-1 mb-1 waves-effect waves-light btn-href">
-                                                <i class="feather icon-edit"></i> Editar
-                                            </a>
-                                            <br/>
-                                            <form method="DELETE" class="form form-vertical" id="form edit_user"
-                                                  name="form_statusproy" action="{{ url("task/".$t->id) }}">
-                                                @csrf
-                                                <button type="submit"
-                                                        class="btn btn-outline-primary mr-1 mb-1 waves-effect waves-light">
-                                                    <i class="feather icon-trash"></i> Eliminar
+                                            <div class="demo-inline-spacing">
+                                                <button type="button" class="btn btn-info btn-href"
+                                                        btn-href="{{ url("task/".$t->id."/edit") }}">
+                                                    <i data-feather="edit-3" class="me-25"></i>
+                                                    <span>Edit</span>
                                                 </button>
-                                            </form>
+                                                <form method="DELETE" class="form form-vertical" id="form edit_user"
+                                                      name="form_statusproy" action="{{ url("task/".$t->id) }}">
+                                                    @csrf
+                                                    <button type="submit"
+                                                            class="btn btn-danger">
+                                                        <i data-feather="trash" class="me-25"></i>
+                                                        <span>Delete</span>
+                                                    </button>
+                                                </form>
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach
