@@ -15,9 +15,14 @@
                                 <th>ID</th>
                                 <th>Name</th>
                                 <th>Address</th>
+                                <th>Lawn</th>
+                                <th>Sprinklers</th>
+                                <th>Apartments</th>
+                                <!--
                                 <th>Latitude</th>
                                 <th>Longitude</th>
                                 <th>User</th>
+                                -->
                                 <th>Office</th>
                             </tr>
                             </thead>
@@ -26,9 +31,14 @@
                                 <th>ID</th>
                                 <th>Name</th>
                                 <th>Address</th>
+                                <th>Lawn</th>
+                                <th>Sprinklers</th>
+                                <th>Apartments</th>
+                                <!--
                                 <th>Latitude</th>
                                 <th>Longitude</th>
                                 <th>User</th>
+                                -->
                                 <th>Office</th>
                             </tr>
                             </tfoot>
@@ -39,9 +49,14 @@
                                         <td>{{ $p->id }}</td>
                                         <td>{{ $p->name }}</td>
                                         <td>{{ $p->address }}</td>
+                                        <td>{{ (($p->has_lawn == TRUE) ? "TRUE" : "FALSE") }}</td>
+                                        <td>{{ (($p->has_sprinklers == TRUE) ? "TRUE" : "FALSE") }}</td>
+                                        <td>{{ (($p->has_apartments == TRUE) ? "TRUE" : "FALSE") }}</td>
+                                        <!--
                                         <td>{{ $p->latitude }}</td>
                                         <td>{{ $p->longitude }}</td>
                                         <td>{{ $p->user->name }}</td>
+                                        -->
                                         <td>{{ $p->office->name }}</td>
                                     </tr>
                                 @endforeach
