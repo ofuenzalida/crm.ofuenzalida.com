@@ -230,7 +230,7 @@
 
         public function unpaid()
         {
-            $this->title       = "Task List / UnPaid";
+            $this->title       = "Task List / Unpaid";
             $this->menu_active = "task_unpaid";
             $this->new_title   = "New Task";
             $this->new_url     = url("task/create");
@@ -252,5 +252,66 @@
                          ->get();
 
             return View("task.unpaid")->with("tasks", $tasks);
+        }
+
+
+        public function paidProperty()
+        {
+            $this->title       = "Task List / Paid / Property";
+            $this->menu_active = "task_paid_property";
+            $this->new_title   = "New Task";
+            $this->new_url     = url("task/create");
+            $this->breadcrumbs = [
+                [
+                    'name' => 'Task',
+                    'url'  => url('task'),
+                ],
+                [
+                    'name' => 'Paid',
+                    'url'  => url('task/paid'),
+                ],
+                [
+                    'name'   => 'Property',
+                    'url'    => url('task/paid/property'),
+                    'active' => TRUE,
+                ],
+            ];
+            $this->loadData();
+
+            $tasks = Task::where("users_id", Auth::user()->id)
+                         ->where("paid", TRUE)
+                         ->get();
+
+            return View("task.paid_property")->with("tasks", $tasks);
+        }
+
+        public function unpaidProperty()
+        {
+            $this->title       = "Task List / Unpaid / Property";
+            $this->menu_active = "task_unpaid_property";
+            $this->new_title   = "New Task";
+            $this->new_url     = url("task/create");
+            $this->breadcrumbs = [
+                [
+                    'name' => 'Task',
+                    'url'  => url('task'),
+                ],
+                [
+                    'name' => 'Unpaid',
+                    'url'  => url('task/unpaid'),
+                ],
+                [
+                    'name'   => 'Property',
+                    'url'    => url('task/unpaid/property'),
+                    'active' => TRUE,
+                ],
+            ];
+            $this->loadData();
+
+            $tasks = Task::where("users_id", Auth::user()->id)
+                         ->where("paid", FALSE)
+                         ->get();
+
+            return View("task.unpaid_property")->with("tasks", $tasks);
         }
     }

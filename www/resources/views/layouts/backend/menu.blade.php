@@ -93,11 +93,25 @@
                                   data-i18n="{{ __("task.menu.name") }} {{ __("task.menu.paid") }}">{{ __("task.menu.paid") }}</span>
                         </a>
                     </li>
+                    <li class="{{ ((isset($menu_active) && $menu_active == 'task_paid_property') ? "active" : "") }}">
+                        <a class="d-flex align-items-center" href="{{ url("task/paid/property") }}">
+                            <i data-feather="circle"></i>
+                            <span class="menu-item text-truncate"
+                                  data-i18n="{{ __("task.menu.name") }} {{ __("task.menu.paid_property") }}">{{ __("task.menu.paid_property") }}</span>
+                        </a>
+                    </li>
                     <li class="{{ ((isset($menu_active) && $menu_active == 'task_unpaid') ? "active" : "") }}">
                         <a class="d-flex align-items-center" href="{{ url("task/unpaid") }}">
                             <i data-feather="circle"></i>
                             <span class="menu-item text-truncate"
                                   data-i18n="{{ __("task.menu.name") }} {{ __("task.menu.unpaid") }}">{{ __("task.menu.unpaid") }}</span>
+                        </a>
+                    </li>
+                    <li class="{{ ((isset($menu_active) && $menu_active == 'task_unpaid_property') ? "active" : "") }}">
+                        <a class="d-flex align-items-center" href="{{ url("task/unpaid/property") }}">
+                            <i data-feather="circle"></i>
+                            <span class="menu-item text-truncate"
+                                  data-i18n="{{ __("task.menu.name") }} {{ __("task.menu.unpaid_property") }}">{{ __("task.menu.unpaid_property") }}</span>
                         </a>
                     </li>
                 </ul>
