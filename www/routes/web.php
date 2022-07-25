@@ -45,7 +45,30 @@
         'language',
     ])
          ->namespace("Task")
+         ->get("/task/paid", [
+             TaskController::class,
+             "paid",
+         ]);
+
+    Route::middleware([
+        'auth',
+        'language',
+    ])
+         ->namespace("Task")
+         ->get("/task/unpaid", [
+             TaskController::class,
+             "unpaid",
+         ]);
+
+
+    Route::middleware([
+        'auth',
+        'language',
+    ])
+         ->namespace("Task")
          ->resource("/task", TaskController::class);
+
+
 
     Route::middleware([
         'auth',

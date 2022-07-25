@@ -33,7 +33,8 @@
             ];
             $this->loadData();
 
-            $tasks = Task::all();
+            $tasks = Task::where("users_id", Auth::user()->id)
+                         ->get();
 
             $task_paid_ok = Task::where("users_id", Auth::user()->id)
                                 ->where("paid", TRUE)
@@ -199,5 +200,57 @@
         public function destroy($id)
         {
             //
+        }
+
+        public function paid()
+        {
+            $this->title       = "Task List / Paid";
+            $this->menu_active = "task_paid";
+            $this->new_title   = "New Task";
+            $this->new_url     = url("task/create");
+            $this->breadcrumbs = [
+                [
+                    'name' => 'Task',
+                    'url'  => url('task'),
+                ],
+                [
+                    'name'   => 'Paid',
+                    'url'    => url('task/paid'),
+                    'active' => TRUE,
+                ],
+            ];
+            $this->loadData();
+
+            $tasks = Task::where("users_id", Auth::user()->id)
+                         ->where("paid", TRUE)
+                         ->get();
+
+            return View("task.paid")->with("tasks", $tasks);
+        }
+
+        public function unpaid()
+        {
+            $this->title       = "Task List / UnPaid";
+            $this->menu_active = "task_unpaid";
+            $this->new_title   = "New Task";
+            $this->new_url     = url("task/create");
+            $this->breadcrumbs = [
+                [
+                    'name' => 'Task',
+                    'url'  => url('task'),
+                ],
+                [
+                    'name'   => 'Paid',
+                    'url'    => url('task/unpaid'),
+                    'active' => TRUE,
+                ],
+            ];
+            $this->loadData();
+
+            $tasks = Task::where("users_id", Auth::user()->id)
+                         ->where("paid", FALSE)
+                         ->get();
+
+            return View("task.unpaid")->with("tasks", $tasks);
         }
     }

@@ -86,6 +86,20 @@
                                   data-i18n="{{ __("task.menu.name") }} {{ __("task.menu.list") }}">{{ __("task.menu.list") }}</span>
                         </a>
                     </li>
+                    <li class="{{ ((isset($menu_active) && $menu_active == 'task_paid') ? "active" : "") }}">
+                        <a class="d-flex align-items-center" href="{{ url("task/paid") }}">
+                            <i data-feather="circle"></i>
+                            <span class="menu-item text-truncate"
+                                  data-i18n="{{ __("task.menu.name") }} {{ __("task.menu.paid") }}">{{ __("task.menu.paid") }}</span>
+                        </a>
+                    </li>
+                    <li class="{{ ((isset($menu_active) && $menu_active == 'task_unpaid') ? "active" : "") }}">
+                        <a class="d-flex align-items-center" href="{{ url("task/unpaid") }}">
+                            <i data-feather="circle"></i>
+                            <span class="menu-item text-truncate"
+                                  data-i18n="{{ __("task.menu.name") }} {{ __("task.menu.unpaid") }}">{{ __("task.menu.unpaid") }}</span>
+                        </a>
+                    </li>
                 </ul>
             </li>
 
@@ -250,7 +264,7 @@
                               data-i18n="{{ __("property.menu.name") }}">{{ __("property.menu.name") }}</span>
                     </a>
                     <ul class="menu-content">
-                        <li class="{{ ((isset($menu_active) && $menu_active == 'property_new') ? "active" : "") }}">
+                        <li class="{{ ((isset($menu_active) && $menu_active == 'property_create') ? "active" : "") }}">
                             <a class="d-flex align-items-center" href="{{ url("configuration/property/create") }}">
                                 <i data-feather="circle"></i>
                                 <span class="menu-item text-truncate"
