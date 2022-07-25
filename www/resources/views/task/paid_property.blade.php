@@ -72,6 +72,7 @@
                                 foreach($tas as $t)
                                 {
                                     $tasks_list[$i]["name"] = $t->property->name;
+                                    $tasks_list[$i]["address"] = $t->property->address;
                                     if(isset($tasks_list[$i]["date_start"]))
                                     {
                                         if($tasks_list[$i]["date_start"] > $t->date)
@@ -106,7 +107,7 @@
                             @foreach($tasks_list  as $tl)
                                 <tr>
                                     <td>{{ $count++ }}</td>
-                                    <td>{{ $tl["name"] }}</td>
+                                    <td>{{ $tl["address"] }}</td>
                                     <td>{{ $tl["date_start"] }}</td>
                                     <td>{{ $tl["date_end"] }}</td>
                                     <td>{{ number_format($tl["total"]) }}</td>
