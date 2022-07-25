@@ -44,6 +44,7 @@
                                 <th>Property</th>
                                 <th>Date Start</th>
                                 <th>Date End</th>
+                                <th>Hour</th>
                                 <th>USD</th>
                             </tr>
                             </thead>
@@ -53,6 +54,7 @@
                                 <th>Property</th>
                                 <th>Date Start</th>
                                 <th>Date End</th>
+                                <th>Hour</th>
                                 <th>USD</th>
                             </tr>
                             </tfoot>
@@ -98,8 +100,8 @@
                                         $tasks_list[$i]["date_end"] = $t->date;
                                     }
 
+                                    $tasks_list[$i]["hour"]  = ($t->hour) + (isset($tasks_list[$i]["hour"]) ? $tasks_list[$i]["hour"] : 0);
                                     $tasks_list[$i]["total"] = ($t->hour * $t->usd) + (isset($tasks_list[$i]["total"]) ? $tasks_list[$i]["total"] : 0);
-
                                 }
                             }
                             $count = 0;
@@ -110,6 +112,7 @@
                                     <td>{{ $tl["address"] }}</td>
                                     <td>{{ $tl["date_start"] }}</td>
                                     <td>{{ $tl["date_end"] }}</td>
+                                    <td>{{ number_format($tl["hour"]) }}</td>
                                     <td>{{ number_format($tl["total"]) }}</td>
                                 </tr>
                             @endforeach
