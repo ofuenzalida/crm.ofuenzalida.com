@@ -80,7 +80,7 @@
                                     $tasks_list[$i]["properties_id"]    = $t->properties_id;
                                     $tasks_list[$i]["name"]             = $t->property->name;
                                     $tasks_list[$i]["address"]          = $t->property->address;
-                                    $tasks_list[$i]["description_work"] = (isset($tasks_list[$i]["description_work"]) ? $tasks_list[$i]["description_work"] : "")."<br/>".$t->description_work;
+                                    $tasks_list[$i]["description_work"] = (isset($tasks_list[$i]["description_work"]) ? $tasks_list[$i]["description_work"] : "")."<br/>".$t->date."<br/>".$t->description_work."<hr/>";
 
                                     ///
                                     /// Find date start

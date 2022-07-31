@@ -46,6 +46,7 @@
                                 <th>USD</th>
                                 <th>Total</th>
                                 <th>Property</th>
+                                <th>Description Work</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -57,6 +58,7 @@
                                 <th>USD</th>
                                 <th>Total</th>
                                 <th>Property</th>
+                                <th>Description Work</th>
                                 <th>Action</th>
                             </tr>
                             </tfoot>
@@ -70,6 +72,7 @@
                                         <td>{{ $t->usd }}</td>
                                         <td>{{ ($t->hour * $t->usd) }}</td>
                                         <td>{{ $t->property->name }}</td>
+                                        <td>{!! str_replace("*","<br/> *", $t->description_work) !!}</td>
                                         <td>
                                             <a href="{{ url("task/".$t->id."/edit") }}" type="button"
                                                class="btn btn-outline-primary mr-1 mb-1 waves-effect waves-light btn-href">
