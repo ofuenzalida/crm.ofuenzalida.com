@@ -42,6 +42,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Date</th>
+                                <th>Date Paid</th>
                                 <th>Hour</th>
                                 <th>USD</th>
                                 <th>Total</th>
@@ -53,6 +54,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Date</th>
+                                <th>Date Paid</th>
                                 <th>Hour</th>
                                 <th>USD</th>
                                 <th>Total</th>
@@ -66,6 +68,7 @@
                                     <tr>
                                         <td>{{ $t->id }}</td>
                                         <td>{{ $t->date }}</td>
+                                        <td>{{ $t->paid_date }}</td>
                                         <td>{{ $t->hour }}</td>
                                         <td>{{ $t->usd }}</td>
                                         <td>{{ ($t->hour * $t->usd) }}</td>

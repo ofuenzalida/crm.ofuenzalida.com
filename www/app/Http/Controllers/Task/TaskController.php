@@ -314,4 +314,35 @@
 
             return View("task.unpaid_property")->with("tasks", $tasks);
         }
+
+        public function paidPropertyId($properties_id = NULL)
+        {
+
+            $tasks = Task::where("properties_id", $properties_id)
+                         ->where("paid", FALSE)
+                         ->get();
+
+
+            $property = Property::find($properties_id);
+
+            foreach($tasks as $task)
+            {
+                $task->paid_date = date("Y-m-d");
+                $task->paid      = TRUE;
+                $task->save();
+            }
+
+            return redirect('task')->with("success", "Paid succcess, Property: ".$property->name);
+        }
+
+        public function paidTaskId($task_id = NULL)
+        {
+            $task            = Task::find($task_id);
+            $property        = Property::find($task->properties_id);
+            $task->paid_date = date("Y-m-d");
+            $task->paid      = TRUE;
+            $task->save();
+
+            return redirect('task')->with("success", "Paid succcess, Property: ".$property->name."<br/> Task:".$task->description_work);
+        }
     }

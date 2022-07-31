@@ -84,6 +84,13 @@
                                                     <i class="feather icon-trash"></i> Eliminar
                                                 </button>
                                             </form>
+                                            <br/>
+                                            <a class="btn btn-primary"
+                                               onclick="javascript:return confirm('are you sure?')"
+                                               href="{{ url("task/".$t->id."/paid") }}">
+                                                Paid
+                                            </a>
+
                                         </td>
                                     </tr>
                                 @endforeach

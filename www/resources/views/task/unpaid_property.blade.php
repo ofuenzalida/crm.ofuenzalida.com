@@ -46,6 +46,8 @@
                                 <th>Date End</th>
                                 <th>Hour</th>
                                 <th>USD</th>
+                                <th>Description Work</th>
+                                <th>Action</th>
                             </tr>
                             </thead>
                             <tfoot>
@@ -56,6 +58,8 @@
                                 <th>Date End</th>
                                 <th>Hour</th>
                                 <th>USD</th>
+                                <th>Description Work</th>
+                                <th>Action</th>
                             </tr>
                             </tfoot>
                             <tbody>
@@ -73,8 +77,14 @@
                             {
                                 foreach($tas as $t)
                                 {
-                                    $tasks_list[$i]["name"]    = $t->property->name;
-                                    $tasks_list[$i]["address"] = $t->property->address;
+                                    $tasks_list[$i]["properties_id"]    = $t->properties_id;
+                                    $tasks_list[$i]["name"]             = $t->property->name;
+                                    $tasks_list[$i]["address"]          = $t->property->address;
+                                    $tasks_list[$i]["description_work"] = (isset($tasks_list[$i]["description_work"]) ? $tasks_list[$i]["description_work"] : "")."<br/>".$t->description_work;
+
+                                    ///
+                                    /// Find date start
+                                    ///
                                     if(isset($tasks_list[$i]["date_start"]))
                                     {
                                         if($tasks_list[$i]["date_start"] > $t->date)
@@ -87,6 +97,9 @@
                                         $tasks_list[$i]["date_start"] = $t->date;
                                     }
 
+                                    ///
+                                    /// Find date end
+                                    ///
                                     $tasks_list[$i]["date_end"] = $t->date;
                                     if(isset($tasks_list[$i]["date_end"]))
                                     {
@@ -114,6 +127,16 @@
                                     <td>{{ $tl["date_end"] }}</td>
                                     <td>{{ number_format($tl["hour"]) }}</td>
                                     <td>{{ number_format($tl["total"]) }}</td>
+                                    <td>
+                                        {!! str_replace("*","<br/> *", $tl["description_work"]) !!}
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-primary"
+                                           onclick="javascript:return confirm('are you sure?')"
+                                           href="{{ url("task/unpaid/property/paid/".$tl["properties_id"]) }}">
+                                            Paid
+                                        </a>
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>

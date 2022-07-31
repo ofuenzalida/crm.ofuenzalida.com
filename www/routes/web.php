@@ -55,6 +55,16 @@
         'language',
     ])
          ->namespace("Task")
+         ->get("/task/{task_id}/paid", [
+             TaskController::class,
+             "paidTaskId",
+         ]);
+
+    Route::middleware([
+        'auth',
+        'language',
+    ])
+         ->namespace("Task")
          ->get("/task/paid/property", [
              TaskController::class,
              "paidProperty",
@@ -78,6 +88,17 @@
          ->get("/task/unpaid/property", [
              TaskController::class,
              "unpaidProperty",
+         ]);
+
+
+    Route::middleware([
+        'auth',
+        'language',
+    ])
+         ->namespace("Task")
+         ->get("/task/unpaid/property/paid/{properties_id}", [
+             TaskController::class,
+             "paidPropertyId",
          ]);
 
 
