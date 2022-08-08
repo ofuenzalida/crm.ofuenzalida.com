@@ -72,6 +72,7 @@
                                 <th>USD</th>
                                 <th>Total</th>
                                 <th>Property</th>
+                                <th>Description Work</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -83,6 +84,7 @@
                                 <th>USD</th>
                                 <th>Total</th>
                                 <th>Property</th>
+                                <th>Description Work</th>
                                 <th>Action</th>
                             </tr>
                             </tfoot>
@@ -96,6 +98,7 @@
                                         <td>{{ $t->usd }}</td>
                                         <td>{{ ($t->hour * $t->usd) }}</td>
                                         <td>{{ $t->property->name }}</td>
+                                        <td>{!! str_replace("*","<br/> *", $t->description_work) !!}</td>
                                         <td>
                                             <div class="demo-inline-spacing">
                                                 <button type="button" class="btn btn-info btn-href"

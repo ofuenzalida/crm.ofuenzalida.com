@@ -6,6 +6,7 @@
     use App\Http\Controllers\Task\TaskController;
     use App\Http\Controllers\Configuration\PropertyController;
     use App\Http\Controllers\Configuration\OfficeController;
+    use App\Http\Controllers\Property\RepairController;
 
     /*
     |--------------------------------------------------------------------------
@@ -23,6 +24,19 @@
         return view('welcome');
     });
 
+    ///
+    /// URL: /property/repair
+    ///
+    Route::middleware([
+        'auth',
+        'language',
+    ])
+         ->namespace("Property")
+         ->resource("/property/repair", RepairController::class);
+
+    ///
+    /// URL: /dashboard/
+    ///
     Route::middleware([
         'auth',
         'language',
@@ -40,6 +54,9 @@
 
          });
 
+    ///
+    /// URL: /task/paid
+    ///
     Route::middleware([
         'auth',
         'language',
@@ -50,6 +67,9 @@
              "paid",
          ]);
 
+    ///
+    /// URL: /task/{task_id}/paid
+    ///
     Route::middleware([
         'auth',
         'language',
@@ -60,6 +80,9 @@
              "paidTaskId",
          ]);
 
+    ///
+    /// URL: /task/paid/property
+    ///
     Route::middleware([
         'auth',
         'language',
@@ -70,6 +93,9 @@
              "paidProperty",
          ]);
 
+    ///
+    /// URL: /task/unpaid
+    ///
     Route::middleware([
         'auth',
         'language',
@@ -80,6 +106,9 @@
              "unpaid",
          ]);
 
+    ///
+    /// URL: /task/unpaid/property
+    ///
     Route::middleware([
         'auth',
         'language',
@@ -91,6 +120,9 @@
          ]);
 
 
+    ///
+    /// URL: /task/unpaid/property/paid/{properties_id}
+    ///
     Route::middleware([
         'auth',
         'language',
@@ -101,7 +133,9 @@
              "paidPropertyId",
          ]);
 
-
+    ///
+    /// URL: /task
+    ///
     Route::middleware([
         'auth',
         'language',
@@ -109,7 +143,9 @@
          ->namespace("Task")
          ->resource("/task", TaskController::class);
 
-
+    ///
+    /// URL: /configuration/language/{language}
+    ///
     Route::middleware([
         'auth',
         'language',

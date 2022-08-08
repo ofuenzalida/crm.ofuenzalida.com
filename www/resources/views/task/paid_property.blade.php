@@ -46,6 +46,7 @@
                                 <th>Date End</th>
                                 <th>Hour</th>
                                 <th>USD</th>
+                                <th>Description Work</th>
                             </tr>
                             </thead>
                             <tfoot>
@@ -56,6 +57,7 @@
                                 <th>Date End</th>
                                 <th>Hour</th>
                                 <th>USD</th>
+                                <th>Description Work</th>
                             </tr>
                             </tfoot>
                             <tbody>
@@ -75,6 +77,11 @@
                                 {
                                     $tasks_list[$i]["name"]    = $t->property->name;
                                     $tasks_list[$i]["address"] = $t->property->address;
+                                    $tasks_list[$i]["description_work"] = (isset($tasks_list[$i]["description_work"]) ? $tasks_list[$i]["description_work"] : "")."<br/>".$t->date."<br/>".$t->description_work."<hr/>";
+
+                                    ///
+                                    /// Find date start
+                                    ///
                                     if(isset($tasks_list[$i]["date_start"]))
                                     {
                                         if($tasks_list[$i]["date_start"] > $t->date)
@@ -87,6 +94,9 @@
                                         $tasks_list[$i]["date_start"] = $t->date;
                                     }
 
+                                    ///
+                                    /// Find date end
+                                    ///
                                     $tasks_list[$i]["date_end"] = $t->date;
                                     if(isset($tasks_list[$i]["date_end"]))
                                     {
@@ -115,6 +125,9 @@
                                     <td>{{ $tl["date_end"] }}</td>
                                     <td>{{ number_format($tl["hour"]) }}</td>
                                     <td>{{ number_format($tl["total"]) }}</td>
+                                    <td>
+                                        {!! str_replace("*","<br/> *", $tl["description_work"]) !!}
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>

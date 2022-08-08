@@ -1,18 +1,37 @@
 @extends("layouts.backend")
 
 @section("content")
+    <?php
+    $total_hours_no_paid = 0;
+    $total_paid_nok = 0;
+    foreach($task_paid_nok as $tpnok)
+    {
+        $total_hours_no_paid += $tpnok->hour;
+        $total_paid_nok      += ($tpnok->hour * $tpnok->usd);
+    }
+
+    $total_hours_paid = 0;
+    $total_paid_ok = 0;
+    foreach($task_paid_ok as $tpok)
+    {
+        $total_hours_paid += $tpok->hour;
+        $total_paid_ok    += ($tpok->hour * $tpok->usd);
+    }
+    ?>
     <section id="dashboard-ecommerce">
         <div class="row match-height">
             <!-- Medal Card -->
             <div class="col-xl-4 col-md-6 col-12">
                 <div class="card card-congratulation-medal">
                     <div class="card-body">
-                        <h5>Congratulations 🎉 {{ Auth::user()->name }}</h5>
-                        <p class="card-text font-small-3">You have won gold medal</p>
+                        <h5>🎉 {{ Auth::user()->name }}</h5>
+                        <p class="card-text font-small-3">List task no paid</p>
                         <h3 class="mb-75 mt-2 pt-50">
-                            <a href="#">$48.9k</a>
+                            <a href="#">$ {{ number_format($total_paid_nok) }}</a>
                         </h3>
-                        <button type="button" class="btn btn-primary">View Sales</button>
+                        <button type="button" class="btn btn-primary btn-href" btn-href="{{ url("task/unpaid") }}">
+                            Tasks no paid
+                        </button>
                         <img src="../../../app-assets/images/illustration/badge.svg"
                              class="congratulation-medal" alt="Medal Pic"/>
                     </div>
@@ -33,27 +52,27 @@
                         <div class="row">
                             <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0">
                                 <div class="d-flex flex-row">
-                                    <div class="avatar bg-light-primary me-2">
+                                    <div class="avatar bg-light-danger me-2">
                                         <div class="avatar-content">
                                             <i data-feather="trending-up" class="avatar-icon"></i>
                                         </div>
                                     </div>
                                     <div class="my-auto">
-                                        <h4 class="fw-bolder mb-0">230k</h4>
-                                        <p class="card-text font-small-3 mb-0">Sales</p>
+                                        <h4 class="fw-bolder mb-0">{{ number_format($total_hours_no_paid) }}</h4>
+                                        <p class="card-text font-small-3 mb-0">Hours No Paid</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0">
                                 <div class="d-flex flex-row">
-                                    <div class="avatar bg-light-info me-2">
+                                    <div class="avatar bg-light-success me-2">
                                         <div class="avatar-content">
-                                            <i data-feather="user" class="avatar-icon"></i>
+                                            <i data-feather="trending-up" class="avatar-icon"></i>
                                         </div>
                                     </div>
                                     <div class="my-auto">
-                                        <h4 class="fw-bolder mb-0">8.549k</h4>
-                                        <p class="card-text font-small-3 mb-0">Customers</p>
+                                        <h4 class="fw-bolder mb-0">{{ number_format($total_hours_paid) }}</h4>
+                                        <p class="card-text font-small-3 mb-0">Hours Paid</p>
                                     </div>
                                 </div>
                             </div>
@@ -61,12 +80,12 @@
                                 <div class="d-flex flex-row">
                                     <div class="avatar bg-light-danger me-2">
                                         <div class="avatar-content">
-                                            <i data-feather="box" class="avatar-icon"></i>
+                                            <i data-feather="dollar-sign" class="avatar-icon"></i>
                                         </div>
                                     </div>
                                     <div class="my-auto">
-                                        <h4 class="fw-bolder mb-0">1.423k</h4>
-                                        <p class="card-text font-small-3 mb-0">Products</p>
+                                        <h4 class="fw-bolder mb-0">$ {{ number_format($total_paid_nok) }}</h4>
+                                        <p class="card-text font-small-3 mb-0">No Paid</p>
                                     </div>
                                 </div>
                             </div>
@@ -78,8 +97,8 @@
                                         </div>
                                     </div>
                                     <div class="my-auto">
-                                        <h4 class="fw-bolder mb-0">$9745</h4>
-                                        <p class="card-text font-small-3 mb-0">Revenue</p>
+                                        <h4 class="fw-bolder mb-0">$ {{ number_format($total_paid_ok) }}</h4>
+                                        <p class="card-text font-small-3 mb-0">Paid</p>
                                     </div>
                                 </div>
                             </div>
@@ -89,7 +108,7 @@
             </div>
             <!--/ Statistics Card -->
         </div>
-
+{{--
         <div class="row match-height">
             <div class="col-lg-4 col-12">
                 <div class="row match-height">
@@ -760,6 +779,7 @@
             </div>
             <!--/ Transaction Card -->
         </div>
+--}}
     </section>
 
 @endsection

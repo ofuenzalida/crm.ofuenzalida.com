@@ -4,6 +4,7 @@
             <li class="nav-item me-auto">
                 <a class="navbar-brand" href="{{ url("") }}">
                     <span class="brand-logo">
+                        <!--
                             <svg viewbox="0 0 139 95" version="1.1" xmlns="http://www.w3.org/2000/svg"
                                  xmlns:xlink="http://www.w3.org/1999/xlink" height="24">
                                 <defs>
@@ -37,8 +38,9 @@
                                     </g>
                                 </g>
                             </svg>
+                            -->
                     </span>
-                    <h2 class="brand-text">Vuexy</h2>
+                    <h2 class="brand-text">CRM OF</h2>
                 </a>
             </li>
             <li class="nav-item nav-toggle">
@@ -53,13 +55,41 @@
     <div class="shadow-bottom"></div>
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-            <li class="nav-item">
+            <li class="nav-item {{ ((isset($menu_active) && $menu_active == 'dashboard') ? "active" : "") }}">
                 <a class="d-flex align-items-center" href="{{ url("dashboard") }}">
                     <i data-feather="home"></i>
                     <span class="menu-title text-truncate" data-i18n="Dashboards">Dashboards</span>
                 </a>
             </li>
-
+            <li class="navigation-header">
+                <span data-i18n="{{ __("property.name") }}">{{ __("property.name") }}</span>
+                <i data-feather="more-horizontal"></i>
+            </li>
+            <li class="nav-item">
+                <a class="d-flex align-items-center" href="{{ url("property/repair") }}">
+                    <i data-feather="user"></i>
+                    <span class="menu-title text-truncate"
+                          data-i18n="{{ __("property.repair.menu.name") }}">{{ __("property.repair.menu.name") }}</span>
+                </a>
+                <ul class="menu-content">
+                    <li class="{{ ((isset($menu_active) && $menu_active == 'property_repair_create') ? "active" : "") }}">
+                        <a class="d-flex align-items-center" href="{{ url("property/repair/create") }}">
+                            <i data-feather="circle"></i>
+                            <span class="menu-item text-truncate"
+                                  data-i18n="{{ __("property.repair.menu.name") }} {{ __("property.repair.menu.new") }}">{{ __("property.repair.menu.new") }}</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="menu-content">
+                    <li class="{{ ((isset($menu_active) && $menu_active == 'property_repair_list') ? "active" : "") }}">
+                        <a class="d-flex align-items-center" href="{{ url("property/repair") }}">
+                            <i data-feather="circle"></i>
+                            <span class="menu-item text-truncate"
+                                  data-i18n="{{ __("property.repair.menu.name") }} {{ __("property.repair.menu.list") }}">{{ __("property.repair.menu.list") }}</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
 
             <li class="navigation-header">
                 <span data-i18n="{{ __("task.name") }}">{{ __("task.name") }}</span>
@@ -272,29 +302,6 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="d-flex align-items-center" href="{{ url("configuration/property") }}">
-                        <i data-feather="user"></i>
-                        <span class="menu-title text-truncate"
-                              data-i18n="{{ __("property.menu.name") }}">{{ __("property.menu.name") }}</span>
-                    </a>
-                    <ul class="menu-content">
-                        <li class="{{ ((isset($menu_active) && $menu_active == 'property_create') ? "active" : "") }}">
-                            <a class="d-flex align-items-center" href="{{ url("configuration/property/create") }}">
-                                <i data-feather="circle"></i>
-                                <span class="menu-item text-truncate"
-                                      data-i18n="{{ __("configuration.menu.property.name") }} {{ __("configuration.menu.property.new") }}">{{ __("configuration.menu.user.new") }}</span>
-                            </a>
-                        </li>
-                        <li class="{{ ((isset($menu_active) && $menu_active == 'property_list') ? "active" : "") }}">
-                            <a class="d-flex align-items-center" href="{{ url("configuration/property") }}">
-                                <i data-feather="circle"></i>
-                                <span class="menu-item text-truncate"
-                                      data-i18n="{{ __("configuration.menu.property.name") }} {{ __("configuration.menu.userproperty.list") }}">{{ __("configuration.menu.user.list") }}</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
                     <a class="d-flex align-items-center" href="{{ url("configuration/invoice") }}">
                         <i data-feather="message-square"></i>
                         <span class="menu-title text-truncate"
@@ -302,6 +309,29 @@
                     </a>
                 </li>
             @endif
+            <li class="nav-item">
+                <a class="d-flex align-items-center" href="{{ url("configuration/property") }}">
+                    <i data-feather="user"></i>
+                    <span class="menu-title text-truncate"
+                          data-i18n="{{ __("property.menu.name") }}">{{ __("property.menu.name") }}</span>
+                </a>
+                <ul class="menu-content">
+                    <li class="{{ ((isset($menu_active) && $menu_active == 'property_create') ? "active" : "") }}">
+                        <a class="d-flex align-items-center" href="{{ url("configuration/property/create") }}">
+                            <i data-feather="circle"></i>
+                            <span class="menu-item text-truncate"
+                                  data-i18n="{{ __("configuration.menu.property.name") }} {{ __("configuration.menu.property.new") }}">{{ __("configuration.menu.user.new") }}</span>
+                        </a>
+                    </li>
+                    <li class="{{ ((isset($menu_active) && $menu_active == 'property_list') ? "active" : "") }}">
+                        <a class="d-flex align-items-center" href="{{ url("configuration/property") }}">
+                            <i data-feather="circle"></i>
+                            <span class="menu-item text-truncate"
+                                  data-i18n="{{ __("configuration.menu.property.name") }} {{ __("configuration.menu.userproperty.list") }}">{{ __("configuration.menu.user.list") }}</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
         </ul>
     </div>
 </div>
