@@ -238,13 +238,24 @@
                 '<hr/>' +
                 '<div>' +
                 '<div class="row d-flex align-items-end">' +
-                '<div class="col-md-3 col-12">' +
+                '<div class="col-md-4 col-12">' +
                 '<div class="mb-1">' +
                 '<label class="form-label" for="itemname">Name(' + count_item + ')</label>' +
                 '<input type="text" class="form-control" id="itemname" name="item_name[' + count_items_db + ']" aria-describedby="itemname" placeholder="Name..."/>' +
                 '</div>' +
                 '</div>' +
-                '<div class="col-md-3 col-12">' +
+                '<div class="col-md-4 col-12">' +
+                '<div class="mb-1">' +
+                '<label class="form-label" for="item_users_id_responsible">User Responsible (' + count_item + ')</label>' +
+                '<select class="form-select" id="item_users_id_responsible" name="item_users_id_responsible[' + count_items_db + ']">' +
+                '<option value="">Select Option...</option>' +
+                    @foreach($users as $user)
+                        '<option value="{{ $user->id }}">{{ $user->name }}</option>' +
+                    @endforeach
+                        '</select>' +
+                '</div>' +
+                '</div>' +
+                '<div class="col-md-4 col-12">' +
                 '<div class="mb-1">' +
                 '<label class="form-label" for="priorities_id">Priority(' + count_item + ')</label>' +
                 '<select class="select2 form-select" id="item_priorities_id" name="item_priorities_id[' + count_items_db + ']">' +
@@ -255,13 +266,15 @@
                         '</select>' +
                 '</div>' +
                 '</div>' +
-                '<div class="col-md-3 col-12">' +
+                '</div>' +
+                '<div class="row">' +
+                '<div class="col-md-4 col-12">' +
                 '<div class="mb-1">' +
                 '<label class="form-label" for="itemquantity">Quantity (' + count_item + ')</label>' +
                 '<input type="number" class="form-control" id="itemquantity" name="item_quantity[' + count_items_db + ']" aria-describedby="itemquantity" placeholder="1"/>' +
                 '</div>' +
                 '</div>' +
-                '<div class="col-md-3 col-12">' +
+                '<div class="col-md-8 col-12">' +
                 '<div class="mb-1">' +
                 '<label class="form-label" for="itemquantity">Description (' + count_item + ')</label>' +
                 '<textarea class="form-control char-textarea" id="itemquantity" name="item_description[' + count_items_db + ']" rows="3" aria-describedby="itemquantity"></textarea>' +

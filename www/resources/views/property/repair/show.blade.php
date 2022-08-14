@@ -19,7 +19,9 @@
                                     </tr>
                                     <tr>
                                         <td>Responsible:&nbsp;&nbsp;</td>
-                                        <td><strong>{{ $repair->userResponsible->name }}</strong></td>
+                                        <td>
+                                            <strong>{{ (isset($repair->userResponsible->name) ? $repair->userResponsible->name : "") }}</strong>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Priority:&nbsp;&nbsp;</td>
