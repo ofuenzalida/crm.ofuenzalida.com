@@ -4,8 +4,12 @@
 
     use App\Http\Controllers\LoginController;
     use App\Models\Office;
+    use App\Models\Priority;
     use App\Models\Property;
+    use App\Models\Repair;
+    use App\Models\RepairsItem;
     use App\Models\Task;
+    use App\Models\User;
     use Illuminate\Http\Request;
     use Auth;
 
@@ -33,22 +37,13 @@
             ];
             $this->loadData();
 
-            $tasks = Task::where("users_id", Auth::user()->id)
-                         ->get();
-
-            $task_paid_ok = Task::where("users_id", Auth::user()->id)
-                                ->where("paid", TRUE)
-                                ->get();
-
-            $task_paid_nok = Task::where("users_id", Auth::user()->id)
-                                 ->where("paid", FALSE)
-                                 ->get();
+            $users   = User::all();
+            $repairs = Repair::all();
 
 
             return View("property.repair.index")
-                ->with("tasks", $tasks)
-                ->with("task_paid_ok", $task_paid_ok)
-                ->with("task_paid_nok", $task_paid_nok);
+                ->with("users", $users)
+                ->with("repairs", $repairs);
         }
 
         /**
@@ -76,8 +71,13 @@
             $this->loadData();
 
             $properties = Property::all();
+            $users      = User::all();
+            $priorities = Priority::all();
 
-            return View("property.repair.create")->with("properties", $properties);
+            return View("property.repair.create")
+                ->with("properties", $properties)
+                ->with("users", $users)
+                ->with("priorities", $priorities);
         }
 
         /**
@@ -89,27 +89,53 @@
          */
         public function store(Request $request)
         {
+            ///dd($request);
             $validated = $request->validate([
-                'hour'             => 'required',
-                'usd'              => 'required',
-                'date'             => 'required',
-                'description_work' => 'required',
-                ///'description_tool' => 'required',
-                'properties_id'    => 'required',
+                'name'                 => 'required',
+                'date_start'           => 'required',
+                'date_end'             => 'required',
+                'description'          => 'required',
+                'users_id_responsible' => 'required',
+                'properties_id'        => 'required',
             ]);
 
-            $task                   = new Task();
-            $task->hour             = $request->hour;
-            $task->usd              = $request->usd;
-            $task->description_work = $request->description_work;
-            $task->description_tool = $request->description_tool;
-            $task->date             = $request->date;
-            $task->paid             = ($request->paid == "on" ? TRUE : FALSE);
-            $task->users_id         = Auth::user()->id;
-            $task->properties_id    = $request->properties_id;
-            $task->save();
+            $repair                       = new Repair();
+            $repair->name                 = $request->name;
+            $repair->date_start           = $request->date_start;
+            $repair->date_end             = $request->date_end;
+            $repair->description          = $request->description;
+            $repair->users_id             = Auth::user()->id;
+            $repair->properties_id        = $request->properties_id;
+            $repair->users_id_responsible = $request->users_id_responsible;
+            $repair->priorities_id        = $request->priorities_id;
+            $repair->save();
 
-            return redirect('task');
+
+            $items_name                = $request->item_name;
+            $items_description         = $request->item_description;
+            $items_quantity            = $request->item_quantity;
+            $items_priorities_id       = $request->item_priorities_id;
+            $item_users_id_responsible = $request->item_users_id_responsible;
+
+            for($i = 1; $i <= count($items_name); $i++)
+            {
+                if(!is_null($items_name[$i]))
+                {
+                    $item                       = new RepairsItem();
+                    $item->repairs_id           = $repair->id;
+                    $item->priorities_id        = $items_priorities_id[$i];
+                    $item->name                 = $items_name[$i];
+                    $item->description          = $items_description[$i];
+                    $item->properties_id        = $repair->properties_id;
+                    $item->users_id             = $repair->users_id;
+                    $item->quantity             = $items_quantity[$i];
+                    $item->users_id_responsible = $item_users_id_responsible[$i];
+                    $item->save();
+                }
+            }
+
+
+            return redirect('property/repair')->with("success", "added items...");
         }
 
         /**
@@ -121,7 +147,35 @@
          */
         public function show($id)
         {
-            //
+            $repair            = Repair::find($id);
+            $this->title       = "Property Repair View";
+            $this->menu_active = "property_repair_list";
+            $this->new_title   = "Repair Edit";
+            $this->breadcrumbs = [
+                [
+                    'name' => 'Task',
+                    'url'  => url('task'),
+                ],
+                [
+                    'name'   => 'Repair',
+                    'url'    => url('task/'.$id."/edit"),
+                    'active' => TRUE,
+                ],
+            ];
+
+            $this->loadData();
+
+            $properties = Property::orderBy('address')
+                                  ->get();
+            $users      = User::all();
+            $priorities = Priority::all();
+
+            return View("property.repair.show")
+                ->with("properties", $properties)
+                ->with("repair", $repair)
+                ->with("users", $users)
+                ->with("priorities", $priorities);
+
         }
 
         /**
@@ -133,19 +187,20 @@
          */
         public function edit($id)
         {
-            $task = Task::find($id);
+            $repair = Repair::find($id);
 
-            $this->title       = "Task Edit";
-            $this->menu_active = "task_create";
-            $this->new_title   = "Task Edit";
+
+            $this->title       = "Property Repair Edit";
+            $this->menu_active = "property_repair_list";
+            $this->new_title   = "Repair Edit";
             $this->breadcrumbs = [
                 [
                     'name' => 'Task',
                     'url'  => url('task'),
                 ],
                 [
-                    'name'   => 'Task',
-                    'url'    => url('task/').$id."/edit",
+                    'name'   => 'Repair',
+                    'url'    => url('task/'.$id."/edit"),
                     'active' => TRUE,
                 ],
             ];
@@ -154,10 +209,14 @@
 
             $properties = Property::orderBy('address')
                                   ->get();
+            $users      = User::all();
+            $priorities = Priority::all();
 
-            return View("task.edit")
+            return View("property.repair.edit")
                 ->with("properties", $properties)
-                ->with("task", $task);
+                ->with("repair", $repair)
+                ->with("users", $users)
+                ->with("priorities", $priorities);
 
         }
 
@@ -172,26 +231,67 @@
         public function update(Request $request, $id)
         {
             $validated = $request->validate([
-                'hour'             => 'required',
-                'usd'              => 'required',
-                'date'             => 'required',
-                'description_work' => 'required',
-                ///'description_tool' => 'required',
-                'properties_id'    => 'required',
+                'name'                 => 'required',
+                'date_start'           => 'required',
+                'date_end'             => 'required',
+                'description'          => 'required',
+                'users_id_responsible' => 'required',
+                'properties_id'        => 'required',
             ]);
 
-            $task                   = Task::find($id);
-            $task->hour             = $request->hour;
-            $task->usd              = $request->usd;
-            $task->description_work = $request->description_work;
-            $task->description_tool = $request->description_tool;
-            $task->date             = $request->date;
-            $task->paid             = ($request->paid == "on" ? TRUE : FALSE);
-            $task->users_id         = Auth::user()->id;
-            $task->properties_id    = $request->properties_id;
-            $task->save();
+            $repair                       = Repair::find($id);
+            $repair->name                 = $request->name;
+            $repair->date_start           = $request->date_start;
+            $repair->date_end             = $request->date_end;
+            $repair->description          = $request->description;
+            $repair->users_id             = Auth::user()->id;
+            $repair->properties_id        = $request->properties_id;
+            $repair->users_id_responsible = $request->users_id_responsible;
+            $repair->priorities_id        = $request->priorities_id;
+            $repair->save();
 
-            return redirect('task');
+
+            $items_name                = $request->item_name;
+            $items_description         = $request->item_description;
+            $items_quantity            = $request->item_quantity;
+            $items_priorities_id       = $request->item_priorities_id;
+            $item_users_id_responsible = $request->item_users_id_responsible;
+
+            ///
+            /// Search indexes taller
+            ///
+            $id_taller = 0;
+            foreach($items_name as $index => $value)
+            {
+                if($index > $id_taller)
+                {
+                    $id_taller = $index;
+                }
+            }
+
+            for($i = 1; $i <= $id_taller; $i++)
+            {
+                if(isset($items_name[$i]) && !is_null($items_name[$i]))
+                {
+                    $item = RepairsItem::firstOrNew([
+                        "id"         => $i,
+                        "repairs_id" => $id,
+                    ]);
+                    ///$item->repairs_id    = $repair->id;
+                    $item->priorities_id        = $items_priorities_id[$i];
+                    $item->name                 = $items_name[$i];
+                    $item->description          = $items_description[$i];
+                    $item->properties_id        = $repair->properties_id;
+                    $item->users_id             = $repair->users_id;
+                    $item->quantity             = $items_quantity[$i];
+                    $item->users_id_responsible = $item_users_id_responsible[$i];
+                    $item->save();
+                }
+            }
+
+
+            return redirect('property/repair')->with("success", "updated items...");
+
         }
 
         /**
@@ -204,6 +304,14 @@
         public function destroy($id)
         {
             //
+        }
+
+        public function deleteItem($id_item)
+        {
+            $item = RepairsItem::find($id_item);
+            $item->delete();
+
+            return redirect('property/repair/'.$item->repair->id.'/edit')->with("success", "delete item...");
         }
 
     }

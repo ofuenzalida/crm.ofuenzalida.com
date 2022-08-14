@@ -26,7 +26,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string|null $deleted_at
  * 
  * @property User $user
- * @property Collection|House[] $houses
  * @property Collection|Property[] $properties
  *
  * @package App\Models
@@ -52,11 +51,6 @@ class Office extends Model
 	public function user()
 	{
 		return $this->belongsTo(User::class, 'users_id');
-	}
-
-	public function houses()
-	{
-		return $this->hasMany(House::class, 'offices_id');
 	}
 
 	public function properties()

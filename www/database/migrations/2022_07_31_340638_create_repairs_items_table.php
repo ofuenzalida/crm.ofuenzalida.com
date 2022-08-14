@@ -30,6 +30,7 @@
                       ->unsigned();
 
                 $table->bigInteger("priorities_id")
+                      ->unsigned()
                       ->nullable();
 
                 $table->foreign('repairs_id')

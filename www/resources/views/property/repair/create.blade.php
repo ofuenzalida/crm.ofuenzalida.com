@@ -11,13 +11,13 @@
                         <p>
 
                         </p>
-                        <form action="{{ url("task") }}" class="needs-validation" novalidate
+                        <form action="{{ url("property/repair") }}" class="needs-validation" novalidate
                               method="POST">
                             {{ csrf_field() }}
                             <div class="row g-1">
                                 <div class="col-md-12 col-12 mb-3 position-relative">
                                     <label class="form-label" for="properties_id">Property</label>
-                                    <select class="select2 form-select" id="default-select" name="properties_id"
+                                    <select class="select2 form-select" id="properties_id" name="properties_id"
                                             required>
                                         <option value="">Select Option...</option>
                                         @foreach($properties as $p)
@@ -30,57 +30,170 @@
                                 </div>
                             </div>
                             <div class="row g-1">
-                                <div class="col-md-3 col-12 mb-3 position-relative">
-                                    <label class="form-label" for="hour">hour</label>
-                                    <input type="number" class="form-control" id="hour" name="hour"
-                                           placeholder="hour" value="{{ old("hour") }}" required/>
+                                <div class="col-md-4 col-12 mb-3 position-relative">
+                                    <label class="form-label" for="hour">name</label>
+                                    <input type="text" class="form-control" id="name" name="name"
+                                           placeholder="name" value="{{ old("name") }}" required/>
                                     <div class="valid-tooltip">Looks good!</div>
                                 </div>
-                                <div class="col-md-3 col-12 mb-3 position-relative">
-                                    <label class="form-label" for="usd">USD</label>
-                                    <input type="number" class="form-control" id="usd" name="usd"
-                                           placeholder="usd" value="{{ old("usd") }}" required/>
+                                <div class="col-md-4 col-12 mb-3 position-relative">
+                                    <label class="form-label" for="date">Date Start</label>
+                                    <input type="text" class="form-control flatpickr-basic" id="date_start"
+                                           name="date_start"
+                                           placeholder="YYYY-MM-DD" value="{{ old("date_start") }}" required/>
                                     <div class="valid-tooltip">Looks good!</div>
                                 </div>
-                                <div class="col-md-3 col-12 mb-3 position-relative">
-                                    <label class="form-label" for="date">date</label>
-                                    <input type="text" class="form-control flatpickr-basic" id="date" name="date"
-                                           placeholder="YYYY-MM-DD" value="{{ old("date") }}" required/>
+                                <div class="col-md-4 col-12 mb-3 position-relative">
+                                    <label class="form-label" for="date">Date End</label>
+                                    <input type="text" class="form-control flatpickr-basic" id="date_end"
+                                           name="date_end"
+                                           placeholder="YYYY-MM-DD" value="{{ old("date_end") }}" required/>
                                     <div class="valid-tooltip">Looks good!</div>
                                 </div>
-                                <div class="col-md-3 col-12 mb-3 position-relative">
-                                    <label class="form-check-label mb-50" for="customSwitch111">Paid?</label>
-                                    <div class="form-check form-switch form-check-success">
-                                        <input type="checkbox" class="form-check-input" id="customSwitch111"
-                                               name="paid"/>
-                                        <label class="form-check-label" for="customSwitch111">
-                                            <span class="switch-icon-left"><i data-feather="check"></i></span>
-                                            <span class="switch-icon-right"><i data-feather="x"></i></span>
-                                        </label>
+                                <div class="col-md-4 col-12 mb-3 position-relative">
+                                    <label class="form-label" for="users_id_responsible">User Responsible</label>
+                                    <select class="select2 form-select" id="users_id_responsible"
+                                            name="users_id_responsible"
+                                            required>
+                                        <option value="">Select Option...</option>
+                                        @foreach($users as $user)
+                                            <option value="{{ $user->id }}" @if(old("users_id_responsible") == $user->id)
+                                                {!! "selected" !!}
+                                                    @endif>{{ $user->name }} | {{ $user->email }}</option>
+                                        @endforeach
+                                    </select>
+                                    <div class="valid-tooltip">Looks good!</div>
+                                </div>
+                                <div class="col-md-4 col-12 mb-3 position-relative">
+                                    <label class="form-label" for="priorities_id">Priority</label>
+                                    <select class="select2 form-select" id="priorities_id" name="priorities_id"
+                                            required>
+                                        <option value="">Select Option...</option>
+                                        @foreach($priorities as $priority)
+                                            <option value="{{ $priority->id }}" @if(old("users_id_responsible") == $priority->id)
+                                                {!! "selected" !!}
+                                                    @endif>{{ $priority->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    <div class="valid-tooltip">Looks good!</div>
+                                </div>
+                            </div>
+                            <div class="row g-1">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h4 class="card-title">Items</h4>
+                                        </div>
+                                        <div class="card-body">
+                                            <div id="items">
+                                                <?php
+                                                    $i = 0;
+                                                ?>
+                                                @for($i=1;$i<=3;$i++)
+                                                    <hr/>
+                                                    <div>
+                                                        <div class="row d-flex align-items-end">
+                                                            <div class="col-md-4 col-12">
+                                                                <div class="mb-1">
+                                                                    <label class="form-label" for="itemname">Name
+                                                                        ({{ $i }})</label>
+                                                                    <input type="text" class="form-control"
+                                                                           id="itemname" name="item_name[{{ $i }}]"
+                                                                           aria-describedby="itemname"
+                                                                           placeholder="Name..."/>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4 col-12">
+                                                                <div class="mb-1">
+                                                                    <label class="form-label"
+                                                                           for="item_users_id_responsible">User
+                                                                        Responsible
+                                                                        ({{ $i }})</label>
+                                                                    <select class="form-select"
+                                                                            id="item_users_id_responsible"
+                                                                            name="item_users_id_responsible[{{ $i }}]">
+                                                                        <option value="">Select Option...</option>
+                                                                        @foreach($users as $user)
+                                                                            <option value="{{ $user->id }}" @if(old("item_users_id_responsible[".$i."]") == $user->id)
+                                                                                {!! "selected" !!}
+                                                                                    @endif>{{ $user->name }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4 col-12">
+                                                                <div class="mb-1">
+                                                                    <label class="form-label" for="priorities_id">Priority
+                                                                        ({{ $i }})</label>
+                                                                    <select class="form-select"
+                                                                            id="item_priorities_id"
+                                                                            name="item_priorities_id[{{ $i }}]">
+                                                                        <option value="">Select Option...</option>
+                                                                        @foreach($priorities as $priority)
+                                                                            <option value="{{ $priority->id }}" @if(old("priorities_id[".$i."]") == $priority->id)
+                                                                                {!! "selected" !!}
+                                                                                    @endif>{{ $priority->name }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-4 col-12">
+                                                                <div class="mb-1">
+                                                                    <label class="form-label"
+                                                                           for="itemquantity">Quantity ({{ $i }}
+                                                                        )</label>
+                                                                    <input type="number" class="form-control"
+                                                                           id="itemquantity"
+                                                                           name="item_quantity[{{ $i }}]"
+                                                                           aria-describedby="itemquantity"
+                                                                           placeholder="1"/>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-8 col-12">
+                                                                <div class="mb-1">
+                                                                    <label class="form-label"
+                                                                           for="itemquantity">Description ({{ $i }}
+                                                                        )</label>
+                                                                    <textarea class="form-control char-textarea"
+                                                                              style="width: 100% !important;"
+                                                                              id="itemquantity"
+                                                                              name="item_description[{{ $i }}]"
+                                                                              rows="3"
+                                                                              aria-describedby="itemquantity"></textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endfor
+                                            </div>
+                                            <hr/>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <a class="btn btn-icon btn-primary" href="#"
+                                                       onclick="addItem()">
+                                                        <i data-feather="plus" class="me-25"></i>
+                                                        <span>Add New</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+
                             <div class="row g-1">
                                 <div class="col-12">
                                     <div class="form-floating mb-0">
                                         <textarea data-length="1000" class="form-control char-textarea"
                                                   id="textarea-counter" rows="5" placeholder="Description Jobs..."
-                                                  name="description_work"
+                                                  name="description"
                                                   style="height: 200px" required></textarea>
                                         <label for="textarea-counter">Description Work</label>
                                     </div>
                                     <small class="textarea-counter-value float-end">
                                         <span class="char-count">0</span> / 1000 </small>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-floating mb-0">
-                                        <textarea data-length="1000" class="form-control"
-                                                  rows="5" placeholder="Description Tools..."
-                                                  id="description_tool"
-                                                  name="description_tool"
-                                                  style="height: 200px"></textarea>
-                                        <label for="description_tool">Description Tools</label>
-                                    </div>
                                 </div>
                             </div>
                             <div class="row g-1">
@@ -98,6 +211,67 @@
 @endsection
 @section("script")
     <script>
+        let count_items = {{  $i++ }};
+
+        function getItemHtml(count_item)
+        {
+            return '<div id="items">' +
+                '<hr/>' +
+                '<div>' +
+                '<div class="row d-flex align-items-end">' +
+                '<div class="col-md-4 col-12">' +
+                '<div class="mb-1">' +
+                '<label class="form-label" for="itemname">Name(' + count_item + ')</label>' +
+                '<input type="text" class="form-control" id="itemname" name="item_name[' + count_item + ']" aria-describedby="itemname" placeholder="Name..."/>' +
+                '</div>' +
+                '</div>' +
+                '<div class="col-md-4 col-12">' +
+                    '<div class="mb-1">' +
+                        '<label class="form-label" for="item_users_id_responsible">User Responsible (' + count_item + ')</label>' +
+                        '<select class="form-select" id="item_users_id_responsible" name="item_users_id_responsible[' + count_item + ']">' +
+                            '<option value="">Select Option...</option>' +
+                            @foreach($users as $user)
+                            '<option value="{{ $user->id }}">{{ $user->name }}</option>' +
+                            @endforeach
+                        '</select>' +
+                    '</div>' +
+                '</div>' +
+                '<div class="col-md-4 col-12">' +
+                '<div class="mb-1">' +
+                '<label class="form-label" for="priorities_id">Priority(' + count_item + ')</label>' +
+                '<select class="select2 form-select" id="item_priorities_id" name="item_priorities_id[' + count_item + ']">' +
+                '<option value="">Select Option...</option>' +
+                    @foreach($priorities as $priority)
+                        '<option value="{{ $priority->id }}" >{{ $priority->name }}</option>' +
+                    @endforeach
+                        '</select>' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '<div class="row">' +
+                '<div class="col-md-4 col-12">' +
+                '<div class="mb-1">' +
+                '<label class="form-label" for="itemquantity">Quantity (' + count_item + ')</label>' +
+                '<input type="number" class="form-control" id="itemquantity" name="item_quantity[' + count_item + ']" aria-describedby="itemquantity" placeholder="1"/>' +
+                '</div>' +
+                '</div>' +
+                '<div class="col-md-8 col-12">' +
+                '<div class="mb-1">' +
+                '<label class="form-label" for="itemquantity">Description (' + count_item + ')</label>' +
+                '<textarea class="form-control char-textarea" id="itemquantity" name="item_description[' + count_item + ']" rows="3" aria-describedby="itemquantity"></textarea>' +
+                '</div>' +
+                '</div>' +
+                ' </div>' +
+                ' </div>' +
+                '</div>';
+        }
+
+        function addItem()
+        {
+            $("#items").append(getItemHtml(count_items));
+            count_items++;
+        }
+
         (function (window, document, $)
         {
             'use strict';

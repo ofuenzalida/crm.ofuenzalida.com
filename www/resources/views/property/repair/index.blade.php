@@ -3,60 +3,6 @@
 @section("content")
     <section id="responsive-datatable">
         <div class="row">
-            <div class="offset-md-3 col-md-3 col-sm-6">
-                <div class="card text-center">
-                    <a href="{{ url("task/paid") }}">
-                        <div class="card-body d-flex align-items-center justify-content-between">
-                            <div>
-                                <h3 class="fw-bolder mb-75">
-                                    <?php
-                                    $total_paid_ok = 0;
-                                    foreach($task_paid_ok as $tpok)
-                                    {
-                                        $total_paid_ok += ($tpok->hour * $tpok->usd);
-                                    }
-                                    ?>
-                                    {{ number_format($total_paid_ok) }}
-                                </h3>
-                                <span>Paid</span>
-                            </div>
-                            <div class="avatar bg-light-success p-50">
-                                        <span class="avatar-content">
-                                            <i data-feather="award" class="font-medium-4"></i>
-                                        </span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="card text-center">
-                    <a href="{{ url("task/unpaid") }}">
-                        <div class="card-body d-flex align-items-center justify-content-between">
-                            <div>
-                                <h3 class="fw-bolder mb-75">
-                                    <?php
-                                    $total_paid_nok = 0;
-                                    foreach($task_paid_nok as $tpnok)
-                                    {
-                                        $total_paid_nok += ($tpnok->hour * $tpnok->usd);
-                                    }
-                                    ?>
-                                    {{ number_format($total_paid_nok) }}
-                                </h3>
-                                <span>No Paid</span>
-                            </div>
-                            <div class="avatar bg-light-warning p-50">
-                                        <span class="avatar-content">
-                                            <i data-feather="award" class="font-medium-4"></i>
-                                        </span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header border-bottom">
@@ -67,47 +13,63 @@
                             <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Date</th>
-                                <th>Hour</th>
-                                <th>USD</th>
-                                <th>Total</th>
                                 <th>Property</th>
-                                <th>Description Work</th>
+                                <th>Name</th>
+                                <th>User Responsible</th>
+                                <th>Date Start</th>
+                                <th>Date End</th>
+                                <th>ITEMS</th>
+                                <th>Description</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tfoot>
                             <tr>
                                 <th>ID</th>
-                                <th>Date</th>
-                                <th>Hour</th>
-                                <th>USD</th>
-                                <th>Total</th>
                                 <th>Property</th>
-                                <th>Description Work</th>
+                                <th>Name</th>
+                                <th>User Responsible</th>
+                                <th>Date Start</th>
+                                <th>Date End</th>
+                                <th>ITEMS</th>
+                                <th>Description</th>
                                 <th>Action</th>
                             </tr>
                             </tfoot>
                             <tbody>
-                            @if(isset($tasks) && $tasks)
-                                @foreach($tasks  as $t)
+                            @if(isset($repairs) && $repairs)
+                                @foreach($repairs  as $repair)
                                     <tr>
-                                        <td>{{ $t->id }}</td>
-                                        <td>{{ $t->date }}</td>
-                                        <td>{{ $t->hour }}</td>
-                                        <td>{{ $t->usd }}</td>
-                                        <td>{{ ($t->hour * $t->usd) }}</td>
-                                        <td>{{ $t->property->name }}</td>
-                                        <td>{!! str_replace("*","<br/> *", $t->description_work) !!}</td>
+                                        <td>{{ $repair->id }}</td>
+                                        <td>{{ $repair->property->name }} <br/> {{ $repair->property->address }}</td>
+                                        <td>{{ $repair->name }}</td>
+                                        <td>{{ (isset($repair->userResponsible->name) ? $repair->userResponsible->name : "") }}</td>
+                                        <td>{{ $repair->date_start }}</td>
+                                        <td>{{ $repair->date_end }}</td>
+                                        <td>
+                                            <ul class="ul-list">
+                                                @foreach($repair->repairs_items as $ri)
+                                                    <li>{{ $ri->name }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </td>
+
+                                        <td>{!! str_replace("*","<br/> *", $repair->description) !!}</td>
                                         <td>
                                             <div class="demo-inline-spacing">
+                                                <button type="button" class="btn btn-success btn-href"
+                                                        btn-href="{{ url("property/repair/".$repair->id) }}">
+                                                    <i data-feather="tag" class="me-25"></i>
+                                                    <span>View</span>
+                                                </button>
                                                 <button type="button" class="btn btn-info btn-href"
-                                                        btn-href="{{ url("task/".$t->id."/edit") }}">
+                                                        btn-href="{{ url("property/repair/".$repair->id."/edit") }}">
                                                     <i data-feather="edit-3" class="me-25"></i>
                                                     <span>Edit</span>
                                                 </button>
                                                 <form method="DELETE" class="form form-vertical" id="form edit_user"
-                                                      name="form_statusproy" action="{{ url("task/".$t->id) }}">
+                                                      name="form_statusproy"
+                                                      action="{{ url("property/repair/".$repair->id) }}">
                                                     @csrf
                                                     <button type="submit"
                                                             class="btn btn-danger">

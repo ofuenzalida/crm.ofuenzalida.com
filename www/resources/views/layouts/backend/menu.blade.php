@@ -302,11 +302,27 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="d-flex align-items-center" href="{{ url("configuration/invoice") }}">
-                        <i data-feather="message-square"></i>
+                    <a class="d-flex align-items-center" href="{{ url("configuration/priority") }}">
+                        <i data-feather="send"></i>
                         <span class="menu-title text-truncate"
-                              data-i18n="{{ __("configuration.menu.invoice.name") }}">{{ __("configuration.menu.invoice.name") }}</span>
+                              data-i18n="{{ __("priority.menu.name") }}">{{ __("priority.menu.name") }}</span>
                     </a>
+                    <ul class="menu-content">
+                        <li class="{{ ((isset($menu_active) && $menu_active == 'priority_create') ? "active" : "") }}">
+                            <a class="d-flex align-items-center" href="{{ url("configuration/priority/create") }}">
+                                <i data-feather="circle"></i>
+                                <span class="menu-item text-truncate"
+                                      data-i18n="{{ __("configuration.menu.priority.name") }} {{ __("configuration.menu.priority.new") }}">{{ __("configuration.menu.user.new") }}</span>
+                            </a>
+                        </li>
+                        <li class="{{ ((isset($menu_active) && $menu_active == 'priority_list') ? "active" : "") }}">
+                            <a class="d-flex align-items-center" href="{{ url("configuration/priority") }}">
+                                <i data-feather="circle"></i>
+                                <span class="menu-item text-truncate"
+                                      data-i18n="{{ __("configuration.menu.priority.name") }} {{ __("configuration.menu.priority.list") }}">{{ __("configuration.menu.priority.list") }}</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
             @endif
             <li class="nav-item">
@@ -332,6 +348,7 @@
                     </li>
                 </ul>
             </li>
+
         </ul>
     </div>
 </div>

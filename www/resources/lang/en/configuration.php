@@ -38,5 +38,10 @@
                 "new"  => "New",
                 "list" => "List",
             ],
+            "priority" => [
+                "name" => "Priority",
+                "new"  => "New",
+                "list" => "List",
+            ],
         ],
     ];

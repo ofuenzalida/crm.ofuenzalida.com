@@ -120,7 +120,9 @@ mix.styles([
                'resources/theme-vuexy/app-assets/css/themes/dark-layout.css',
                'resources/theme-vuexy/app-assets/css/themes/bordered-layout.css',
                'resources/theme-vuexy/app-assets/css/themes/semi-dark-layout.css',
-               'resources/theme-vuexy/app-assets/css/core/menu/menu-types/vertical-menu.css'
+               'resources/theme-vuexy/app-assets/css/core/menu/menu-types/vertical-menu.css',
+               'resources/theme-vuexy/app-assets/css/pages/app-invoice.css',
+               'resources/css/custom.css',
            ], 'public/assets/css/theme-plugins.css');
 
 mix.scripts(
@@ -139,6 +141,7 @@ mix.scripts(
         'resources/theme-vuexy/app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js',
         'resources/theme-vuexy/app-assets/vendors/js/forms/select/select2.full.min.js',
         'resources/theme-vuexy/app-assets/js/scripts/forms/form-select2.js',
-        'resources/theme-vuexy/app-assets/vendors/js/forms/validation/jquery.validate.min.js'
+        'resources/theme-vuexy/app-assets/vendors/js/forms/validation/jquery.validate.min.js',
+        'resources/theme-vuexy/app-assets/vendors/js/forms/repeater/jquery.repeater.min.js'
     ], 'public/assets/js/theme-plugins.js'
 );

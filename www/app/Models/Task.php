@@ -14,15 +14,18 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * Class Task
  * 
  * @property int $id
- * @property int $hours
+ * @property int $hour
  * @property int $usd
- * @property string|null $description
- * @property string|null $tools
+ * @property bool $paid
+ * @property Carbon $date
+ * @property string|null $description_work
+ * @property string|null $description_tool
  * @property int $users_id
  * @property int $properties_id
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $deleted_at
+ * @property Carbon|null $paid_date
  * 
  * @property Property $property
  * @property User $user
@@ -35,19 +38,28 @@ class Task extends Model
 	protected $table = 'task';
 
 	protected $casts = [
-		'hours' => 'int',
+		'hour' => 'int',
 		'usd' => 'int',
+		'paid' => 'bool',
 		'users_id' => 'int',
 		'properties_id' => 'int'
 	];
 
+	protected $dates = [
+		'date',
+		'paid_date'
+	];
+
 	protected $fillable = [
-		'hours',
+		'hour',
 		'usd',
-		'description',
-		'tools',
+		'paid',
+		'date',
+		'description_work',
+		'description_tool',
 		'users_id',
-		'properties_id'
+		'properties_id',
+		'paid_date'
 	];
 
 	public function property()

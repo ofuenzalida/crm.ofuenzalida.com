@@ -35,6 +35,7 @@
                       ->unsigned();
 
                 $table->bigInteger("priorities_id")
+                      ->unsigned()
                       ->nullable();
 
                 $table->foreign('users_id')

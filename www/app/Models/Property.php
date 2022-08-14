@@ -25,9 +25,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $deleted_at
+ * @property bool $has_lawn
+ * @property bool $has_sprinklers
+ * @property bool $has_apartments
  * 
  * @property Office $office
  * @property User $user
+ * @property Collection|Lawn[] $lawns
+ * @property Collection|Repair[] $repairs
+ * @property Collection|RepairsItem[] $repairs_items
  * @property Collection|Task[] $tasks
  *
  * @package App\Models
@@ -39,7 +45,10 @@ class Property extends Model
 
 	protected $casts = [
 		'users_id' => 'int',
-		'offices_id' => 'int'
+		'offices_id' => 'int',
+		'has_lawn' => 'bool',
+		'has_sprinklers' => 'bool',
+		'has_apartments' => 'bool'
 	];
 
 	protected $fillable = [
@@ -49,7 +58,10 @@ class Property extends Model
 		'longitude',
 		'polygon',
 		'users_id',
-		'offices_id'
+		'offices_id',
+		'has_lawn',
+		'has_sprinklers',
+		'has_apartments'
 	];
 
 	public function office()
@@ -60,6 +72,21 @@ class Property extends Model
 	public function user()
 	{
 		return $this->belongsTo(User::class, 'users_id');
+	}
+
+	public function lawns()
+	{
+		return $this->hasMany(Lawn::class, 'properties_id');
+	}
+
+	public function repairs()
+	{
+		return $this->hasMany(Repair::class, 'properties_id');
+	}
+
+	public function repairs_items()
+	{
+		return $this->hasMany(RepairsItem::class, 'properties_id');
 	}
 
 	public function tasks()

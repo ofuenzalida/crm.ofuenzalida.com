@@ -7,6 +7,7 @@
     use App\Http\Controllers\Configuration\PropertyController;
     use App\Http\Controllers\Configuration\OfficeController;
     use App\Http\Controllers\Property\RepairController;
+    use App\Http\Controllers\Configuration\PriorityController;
 
     /*
     |--------------------------------------------------------------------------
@@ -33,6 +34,19 @@
     ])
          ->namespace("Property")
          ->resource("/property/repair", RepairController::class);
+    ///
+    /// URL: /property/repair/item/delete/{$id_item}
+    ///
+    Route::middleware([
+        'auth',
+        'language',
+    ])
+         ->namespace("Property")
+         ->get("/property/repair/item/delete/{id_item}", [
+             RepairController::class,
+             "deleteItem",
+         ]);
+
 
     ///
     /// URL: /dashboard/
@@ -168,6 +182,7 @@
     Route::resources([
         "configuration/office"   => OfficeController::class,
         "configuration/property" => PropertyController::class,
+        "configuration/priority" => PriorityController::class,
         "configuration/asdf"     => PropertyController::class,
     ]);
 
