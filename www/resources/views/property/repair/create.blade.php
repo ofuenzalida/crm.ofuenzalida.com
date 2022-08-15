@@ -12,7 +12,7 @@
 
                         </p>
                         <form action="{{ url("property/repair") }}" class="needs-validation" novalidate
-                              method="POST">
+                              method="POST" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <div class="row g-1">
                                 <div class="col-md-12 col-12 mb-3 position-relative">
@@ -142,8 +142,7 @@
                                                             <div class="col-md-4 col-12">
                                                                 <div class="mb-1">
                                                                     <label class="form-label"
-                                                                           for="itemquantity">Quantity ({{ $i }}
-                                                                        )</label>
+                                                                           for="itemquantity">Quantity ({{ $i }})</label>
                                                                     <input type="number" class="form-control"
                                                                            id="itemquantity"
                                                                            name="item_quantity[{{ $i }}]"
@@ -154,14 +153,21 @@
                                                             <div class="col-md-8 col-12">
                                                                 <div class="mb-1">
                                                                     <label class="form-label"
-                                                                           for="itemquantity">Description ({{ $i }}
-                                                                        )</label>
+                                                                           for="itemquantity">Description ({{ $i }})</label>
                                                                     <textarea class="form-control char-textarea"
                                                                               style="width: 100% !important;"
                                                                               id="itemquantity"
                                                                               name="item_description[{{ $i }}]"
                                                                               rows="3"
                                                                               aria-describedby="itemquantity"></textarea>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-12">
+                                                                    <label for="item_files_{{ $i }}" class="form-label">Multiple files input</label>
+                                                                    <input type="file" name="item_files[{{ $i }}][]"
+                                                                           class="form-control custom-file-input"
+                                                                           id="item_files_{{ $i }}" multiple>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -226,15 +232,15 @@
                 '</div>' +
                 '</div>' +
                 '<div class="col-md-4 col-12">' +
-                    '<div class="mb-1">' +
-                        '<label class="form-label" for="item_users_id_responsible">User Responsible (' + count_item + ')</label>' +
-                        '<select class="form-select" id="item_users_id_responsible" name="item_users_id_responsible[' + count_item + ']">' +
-                            '<option value="">Select Option...</option>' +
-                            @foreach($users as $user)
-                            '<option value="{{ $user->id }}">{{ $user->name }}</option>' +
-                            @endforeach
+                '<div class="mb-1">' +
+                '<label class="form-label" for="item_users_id_responsible">User Responsible (' + count_item + ')</label>' +
+                '<select class="form-select" id="item_users_id_responsible" name="item_users_id_responsible[' + count_item + ']">' +
+                '<option value="">Select Option...</option>' +
+                    @foreach($users as $user)
+                        '<option value="{{ $user->id }}">{{ $user->name }}</option>' +
+                    @endforeach
                         '</select>' +
-                    '</div>' +
+                '</div>' +
                 '</div>' +
                 '<div class="col-md-4 col-12">' +
                 '<div class="mb-1">' +

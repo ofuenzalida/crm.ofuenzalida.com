@@ -8,6 +8,7 @@
     use App\Models\Property;
     use App\Models\Repair;
     use App\Models\RepairsItem;
+    use App\Models\RepairsItemsFile;
     use App\Models\Task;
     use App\Models\User;
     use Illuminate\Http\Request;
@@ -99,18 +100,6 @@
                 'properties_id'        => 'required',
             ]);
 
-            dd($request->file());
-            /*$fileModel = new File;
-            if($request->file())
-            {
-                $fileName             = time().'_'.$request->file->getClientOriginalName();
-                $filePath             = $request->file('file')
-                                                ->storeAs('uploads', $fileName, 'public');
-                $fileModel->name      = time().'_'.$request->file->getClientOriginalName();
-                $fileModel->file_path = '/storage/'.$filePath;
-                $fileModel->save();
-            }*/
-
             $repair                       = new Repair();
             $repair->name                 = $request->name;
             $repair->date_start           = $request->date_start;
@@ -143,6 +132,29 @@
                     $item->quantity             = $items_quantity[$i];
                     $item->users_id_responsible = $item_users_id_responsible[$i];
                     $item->save();
+                }
+            }
+
+            ///
+            ///  dd($request->file("item_files"));
+            ///
+            if($request->file("item_files"))
+            {
+                foreach($request->file("item_files") as $item => $value)
+                {
+                    foreach($value as $item2 => $value2)
+                    {
+                        $repairItemsFile                   = new RepairsItemsFile();
+                        $repairItemsFile->properties_id    = $repair->properties_id;
+                        $repairItemsFile->users_id         = $repair->users_id;
+                        $repairItemsFile->repairs_items_id = $item;
+                        $repairItemsFile->repairs_id       = $repair->id;
+                        $fileName                          = time().'_'.$value2->getClientOriginalName();
+                        $filePath                          = $value2->storeAs('uploads', $fileName, 'public');
+                        $repairItemsFile->name             = time().'_'.$value2->getClientOriginalName();
+                        $repairItemsFile->file_path        = '/storage/'.$filePath;
+                        $repairItemsFile->save();
+                    }
                 }
             }
 

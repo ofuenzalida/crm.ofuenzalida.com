@@ -14,24 +14,25 @@
     /**
      * Class Repair
      *
-     * @property int                      $id
-     * @property string                   $name
-     * @property string|null              $description
-     * @property Carbon|null              $date_start
-     * @property Carbon|null              $date_end
-     * @property int                      $users_id
-     * @property int                      $users_id_responsible
-     * @property int                      $properties_id
-     * @property int|null                 $priorities_id
-     * @property Carbon|null              $created_at
-     * @property Carbon|null              $updated_at
-     * @property string|null              $deleted_at
+     * @property int                           $id
+     * @property string                        $name
+     * @property string|null                   $description
+     * @property Carbon|null                   $date_start
+     * @property Carbon|null                   $date_end
+     * @property int                           $users_id
+     * @property int                           $users_id_responsible
+     * @property int                           $properties_id
+     * @property int|null                      $priorities_id
+     * @property Carbon|null                   $created_at
+     * @property Carbon|null                   $updated_at
+     * @property string|null                   $deleted_at
      *
-     * @property Priority|null            $priority
-     * @property Property                 $property
-     * @property User                     $user
-     * @property Collection|RepairsItem[] $repairs_items
-     * @property Collection|RepairsTool[] $repairs_tools
+     * @property Priority|null                 $priority
+     * @property Property                      $property
+     * @property User                          $user
+     * @property Collection|RepairsItem[]      $repairs_items
+     * @property Collection|RepairsItemsFile[] $repairs_items_files
+     * @property Collection|RepairsTool[]      $repairs_tools
      *
      * @package App\Models
      */
@@ -87,6 +88,11 @@
         public function repairs_items()
         {
             return $this->hasMany(RepairsItem::class, 'repairs_id');
+        }
+
+        public function repairs_items_files()
+        {
+            return $this->hasMany(RepairsItemsFile::class, 'repairs_id');
         }
 
         public function repairs_tools()

@@ -27,6 +27,12 @@
                 $table->bigInteger("properties_id")
                       ->unsigned();
 
+                $table->bigInteger("repairs_items_id")
+                      ->unsigned();
+
+                $table->bigInteger("repairs_id")
+                      ->unsigned();
+
 
                 $table->foreign('users_id')
                       ->references('id')
@@ -35,6 +41,14 @@
                 $table->foreign('properties_id')
                       ->references('id')
                       ->on('properties');
+
+                $table->foreign('repairs_items_id')
+                      ->references('id')
+                      ->on('repairs_items');
+
+                $table->foreign('repairs_id')
+                      ->references('id')
+                      ->on('repairs');
 
 
                 $table->timestamps();

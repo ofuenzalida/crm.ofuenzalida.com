@@ -7,6 +7,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -33,6 +34,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property Priority|null $priority
  * @property Property $property
  * @property Repair $repair
+ * @property Collection|RepairsItemsFile[] $repairs_items_files
  *
  * @package App\Models
  */
@@ -88,5 +90,10 @@ class RepairsItem extends Model
 	public function repair()
 	{
 		return $this->belongsTo(Repair::class, 'repairs_id');
+	}
+
+	public function repairs_items_files()
+	{
+		return $this->hasMany(RepairsItemsFile::class, 'repairs_items_id');
 	}
 }

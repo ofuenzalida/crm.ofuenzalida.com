@@ -18,11 +18,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string|null $file_path
  * @property int $users_id
  * @property int $properties_id
+ * @property int $repairs_items_id
+ * @property int $repairs_id
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $deleted_at
  * 
  * @property Property $property
+ * @property Repair $repair
+ * @property RepairsItem $repairs_item
  * @property User $user
  *
  * @package App\Models
@@ -34,19 +38,33 @@ class RepairsItemsFile extends Model
 
 	protected $casts = [
 		'users_id' => 'int',
-		'properties_id' => 'int'
+		'properties_id' => 'int',
+		'repairs_items_id' => 'int',
+		'repairs_id' => 'int'
 	];
 
 	protected $fillable = [
 		'name',
 		'file_path',
 		'users_id',
-		'properties_id'
+		'properties_id',
+		'repairs_items_id',
+		'repairs_id'
 	];
 
 	public function property()
 	{
 		return $this->belongsTo(Property::class, 'properties_id');
+	}
+
+	public function repair()
+	{
+		return $this->belongsTo(Repair::class, 'repairs_id');
+	}
+
+	public function repairs_item()
+	{
+		return $this->belongsTo(RepairsItem::class, 'repairs_items_id');
 	}
 
 	public function user()
