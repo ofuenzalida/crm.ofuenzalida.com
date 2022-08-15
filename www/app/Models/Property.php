@@ -34,6 +34,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property Collection|Lawn[] $lawns
  * @property Collection|Repair[] $repairs
  * @property Collection|RepairsItem[] $repairs_items
+ * @property Collection|RepairsItemsFile[] $repairs_items_files
  * @property Collection|Task[] $tasks
  *
  * @package App\Models
@@ -87,6 +88,11 @@ class Property extends Model
 	public function repairs_items()
 	{
 		return $this->hasMany(RepairsItem::class, 'properties_id');
+	}
+
+	public function repairs_items_files()
+	{
+		return $this->hasMany(RepairsItemsFile::class, 'properties_id');
 	}
 
 	public function tasks()

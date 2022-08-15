@@ -99,6 +99,18 @@
                 'properties_id'        => 'required',
             ]);
 
+            dd($request->file());
+            /*$fileModel = new File;
+            if($request->file())
+            {
+                $fileName             = time().'_'.$request->file->getClientOriginalName();
+                $filePath             = $request->file('file')
+                                                ->storeAs('uploads', $fileName, 'public');
+                $fileModel->name      = time().'_'.$request->file->getClientOriginalName();
+                $fileModel->file_path = '/storage/'.$filePath;
+                $fileModel->save();
+            }*/
+
             $repair                       = new Repair();
             $repair->name                 = $request->name;
             $repair->date_start           = $request->date_start;

@@ -25,11 +25,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string|null $deleted_at
  * @property int|null $quantity
  * @property int|null $users_id_responsible
+ * @property bool|null $completed
+ * @property Carbon|null $completed_date
+ * @property int|null $completed_users_id
  * 
+ * @property User|null $user
  * @property Priority|null $priority
  * @property Property $property
  * @property Repair $repair
- * @property User|null $user
  *
  * @package App\Models
  */
@@ -44,7 +47,13 @@ class RepairsItem extends Model
 		'properties_id' => 'int',
 		'priorities_id' => 'int',
 		'quantity' => 'int',
-		'users_id_responsible' => 'int'
+		'users_id_responsible' => 'int',
+		'completed' => 'bool',
+		'completed_users_id' => 'int'
+	];
+
+	protected $dates = [
+		'completed_date'
 	];
 
 	protected $fillable = [
@@ -55,8 +64,16 @@ class RepairsItem extends Model
 		'properties_id',
 		'priorities_id',
 		'quantity',
-		'users_id_responsible'
+		'users_id_responsible',
+		'completed',
+		'completed_date',
+		'completed_users_id'
 	];
+
+	public function user()
+	{
+		return $this->belongsTo(User::class, 'users_id_responsible');
+	}
 
 	public function priority()
 	{
@@ -71,10 +88,5 @@ class RepairsItem extends Model
 	public function repair()
 	{
 		return $this->belongsTo(Repair::class, 'repairs_id');
-	}
-
-	public function user()
-	{
-		return $this->belongsTo(User::class, 'users_id_responsible');
 	}
 }

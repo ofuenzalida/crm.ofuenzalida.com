@@ -69,8 +69,8 @@
                                 @foreach($tasks  as $t)
                                     <tr>
                                         <td>{{ $t->id }}</td>
-                                        <td>{{ $t->date }}</td>
-                                        <td>{{ $t->paid_date }}</td>
+                                        <td>{{ date("m/d/Y",strtotime($t->date)) }}</td>
+                                        <td>{{ date("m/d/Y",strtotime($t->paid_date)) }}</td>
                                         <td>{{ $t->hour }}</td>
                                         <td>{{ $t->usd }}</td>
                                         <td>{{ ($t->hour * $t->usd) }}</td>

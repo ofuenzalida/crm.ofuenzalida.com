@@ -10,11 +10,11 @@
                             <div>
                                 <h3 class="fw-bolder mb-75">
                                     <?php
-                                    $total_paid_nok = 0;
-                                    foreach($tasks as $tpok)
-                                    {
-                                        $total_paid_nok += ($tpok->hour * $tpok->usd);
-                                    }
+                                        $total_paid_nok = 0;
+                                        foreach($tasks as $tpok)
+                                        {
+                                            $total_paid_nok += ($tpok->hour * $tpok->usd);
+                                        }
                                     ?>
                                     {{ number_format($total_paid_nok) }}
                                 </h3>
@@ -64,67 +64,67 @@
                             </tfoot>
                             <tbody>
                             <?php
-                            $property_list = [];
-                            $tasks_order = [];
-                            $tasks_list = [];
-                            foreach($tasks as $task)
-                            {
-                                $property_list[$task->properties_id] = $task->property->name;
-                                $tasks_order[$task->properties_id][] = $task;
-                            }
-
-                            foreach($tasks_order as $i => $tas)
-                            {
-                                foreach($tas as $t)
+                                $property_list = [];
+                                $tasks_order   = [];
+                                $tasks_list    = [];
+                                foreach($tasks as $task)
                                 {
-                                    $tasks_list[$i]["properties_id"]    = $t->properties_id;
-                                    $tasks_list[$i]["name"]             = $t->property->name;
-                                    $tasks_list[$i]["address"]          = $t->property->address;
-                                    $tasks_list[$i]["description_work"] = (isset($tasks_list[$i]["description_work"]) ? $tasks_list[$i]["description_work"] : "")."<br/>".$t->date."<br/>".$t->description_work."<hr/>";
+                                    $property_list[$task->properties_id] = $task->property->name;
+                                    $tasks_order[$task->properties_id][] = $task;
+                                }
 
-                                    ///
-                                    /// Find date start
-                                    ///
-                                    if(isset($tasks_list[$i]["date_start"]))
+                                foreach($tasks_order as $i => $tas)
+                                {
+                                    foreach($tas as $t)
                                     {
-                                        if($tasks_list[$i]["date_start"] > $t->date)
+                                        $tasks_list[$i]["properties_id"]    = $t->properties_id;
+                                        $tasks_list[$i]["name"]             = $t->property->name;
+                                        $tasks_list[$i]["address"]          = $t->property->address;
+                                        $tasks_list[$i]["description_work"] = (isset($tasks_list[$i]["description_work"]) ? $tasks_list[$i]["description_work"] : "")."<br/>".date("m/d/Y", strtotime($t->date))."<br/>".$t->description_work."<hr/>";
+
+                                        ///
+                                        /// Find date start
+                                        ///
+                                        if(isset($tasks_list[$i]["date_start"]))
+                                        {
+                                            if($tasks_list[$i]["date_start"] > $t->date)
+                                            {
+                                                $tasks_list[$i]["date_start"] = $t->date;
+                                            }
+                                        }
+                                        else
                                         {
                                             $tasks_list[$i]["date_start"] = $t->date;
                                         }
-                                    }
-                                    else
-                                    {
-                                        $tasks_list[$i]["date_start"] = $t->date;
-                                    }
 
-                                    ///
-                                    /// Find date end
-                                    ///
-                                    $tasks_list[$i]["date_end"] = $t->date;
-                                    if(isset($tasks_list[$i]["date_end"]))
-                                    {
-                                        if($tasks_list[$i]["date_end"] > $t->date)
+                                        ///
+                                        /// Find date end
+                                        ///
+                                        $tasks_list[$i]["date_end"] = $t->date;
+                                        if(isset($tasks_list[$i]["date_end"]))
+                                        {
+                                            if($tasks_list[$i]["date_end"] > $t->date)
+                                            {
+                                                $tasks_list[$i]["date_end"] = $t->date;
+                                            }
+                                        }
+                                        else
                                         {
                                             $tasks_list[$i]["date_end"] = $t->date;
                                         }
-                                    }
-                                    else
-                                    {
-                                        $tasks_list[$i]["date_end"] = $t->date;
-                                    }
 
-                                    $tasks_list[$i]["hour"]  = ($t->hour) + (isset($tasks_list[$i]["hour"]) ? $tasks_list[$i]["hour"] : 0);
-                                    $tasks_list[$i]["total"] = ($t->hour * $t->usd) + (isset($tasks_list[$i]["total"]) ? $tasks_list[$i]["total"] : 0);
+                                        $tasks_list[$i]["hour"]  = ($t->hour) + (isset($tasks_list[$i]["hour"]) ? $tasks_list[$i]["hour"] : 0);
+                                        $tasks_list[$i]["total"] = ($t->hour * $t->usd) + (isset($tasks_list[$i]["total"]) ? $tasks_list[$i]["total"] : 0);
+                                    }
                                 }
-                            }
-                            $count = 0;
+                                $count = 0;
                             ?>
                             @foreach($tasks_list  as $tl)
                                 <tr>
                                     <td>{{ $count++ }}</td>
                                     <td>{{ $tl["address"] }}</td>
-                                    <td>{{ $tl["date_start"] }}</td>
-                                    <td>{{ $tl["date_end"] }}</td>
+                                    <td>{{ date("m/d/Y",strtotime($tl["date_start"])) }}</td>
+                                    <td>{{ date("m/d/Y",strtotime($tl["date_end"])) }}</td>
                                     <td>{{ number_format($tl["hour"]) }}</td>
                                     <td>{{ number_format($tl["total"]) }}</td>
                                     <td>

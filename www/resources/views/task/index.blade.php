@@ -10,11 +10,11 @@
                             <div>
                                 <h3 class="fw-bolder mb-75">
                                     <?php
-                                    $total_paid_ok = 0;
-                                    foreach($task_paid_ok as $tpok)
-                                    {
-                                        $total_paid_ok += ($tpok->hour * $tpok->usd);
-                                    }
+                                        $total_paid_ok = 0;
+                                        foreach($task_paid_ok as $tpok)
+                                        {
+                                            $total_paid_ok += ($tpok->hour * $tpok->usd);
+                                        }
                                     ?>
                                     {{ number_format($total_paid_ok) }}
                                 </h3>
@@ -36,11 +36,11 @@
                             <div>
                                 <h3 class="fw-bolder mb-75">
                                     <?php
-                                    $total_paid_nok = 0;
-                                    foreach($task_paid_nok as $tpnok)
-                                    {
-                                        $total_paid_nok += ($tpnok->hour * $tpnok->usd);
-                                    }
+                                        $total_paid_nok = 0;
+                                        foreach($task_paid_nok as $tpnok)
+                                        {
+                                            $total_paid_nok += ($tpnok->hour * $tpnok->usd);
+                                        }
                                     ?>
                                     {{ number_format($total_paid_nok) }}
                                 </h3>
@@ -93,7 +93,7 @@
                                 @foreach($tasks  as $t)
                                     <tr>
                                         <td>{{ $t->id }}</td>
-                                        <td>{{ $t->date }}</td>
+                                        <td>{{ date("m/d/Y",strtotime($t->date)) }}</td>
                                         <td>{{ $t->hour }}</td>
                                         <td>{{ $t->usd }}</td>
                                         <td>{{ ($t->hour * $t->usd) }}</td>

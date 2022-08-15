@@ -64,15 +64,22 @@
                         <table class="table">
                             <thead>
                             <tr>
+                                <th class="py-1">#</th>
                                 <th class="py-1">Task description</th>
                                 <th class="py-1">Quality</th>
-                                <th class="py-1">Responsible</th>
+                                <th class="py-1">User Responsible</th>
                                 <th class="py-1">Priority</th>
                             </tr>
                             </thead>
                             <tbody>
+                            <?php
+                                $count = 0;
+                            ?>
                             @foreach($repair->repairs_items as $item)
                                 <tr>
+                                    <td class="py-1">
+                                        {{ ++$count }}
+                                    </td>
                                     <td class="py-1">
                                         <p class="card-text fw-bold mb-25">{{ $item->name }}</p>
                                         <p class="card-text text-nowrap">

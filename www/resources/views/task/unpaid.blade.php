@@ -10,11 +10,11 @@
                             <div>
                                 <h3 class="fw-bolder mb-75">
                                     <?php
-                                    $total_paid_nok = 0;
-                                    foreach($tasks as $tpok)
-                                    {
-                                        $total_paid_nok += ($tpok->hour * $tpok->usd);
-                                    }
+                                        $total_paid_nok = 0;
+                                        foreach($tasks as $tpok)
+                                        {
+                                            $total_paid_nok += ($tpok->hour * $tpok->usd);
+                                        }
                                     ?>
                                     {{ number_format($total_paid_nok) }}
                                 </h3>
@@ -67,7 +67,7 @@
                                 @foreach($tasks  as $t)
                                     <tr>
                                         <td>{{ $t->id }}</td>
-                                        <td>{{ $t->date }}</td>
+                                        <td>{{ date("m/d/Y", strtotime($t->date)) }}</td>
                                         <td>{{ $t->hour }}</td>
                                         <td>{{ $t->usd }}</td>
                                         <td>{{ ($t->hour * $t->usd) }}</td>
