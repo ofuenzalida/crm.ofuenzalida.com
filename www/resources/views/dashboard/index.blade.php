@@ -29,7 +29,7 @@
                         <h3 class="mb-75 mt-2 pt-50">
                             <a href="#">$ {{ number_format($total_paid_nok) }}</a>
                         </h3>
-                        <button type="button" class="btn btn-primary btn-href" btn-href="{{ url("task/unpaid") }}">
+                        <button type="button" class="btn btn-primary btn-href" btn-href="{{ url("/task/unpaid/list") }}">
                             Tasks no paid
                         </button>
                         <img src="../../../app-assets/images/illustration/badge.svg"

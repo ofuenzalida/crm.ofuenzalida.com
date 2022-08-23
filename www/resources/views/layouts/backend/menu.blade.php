@@ -117,7 +117,7 @@
                         </a>
                     </li>
                     <li class="{{ ((isset($menu_active) && $menu_active == 'task_paid') ? "active" : "") }}">
-                        <a class="d-flex align-items-center" href="{{ url("task/paid") }}">
+                        <a class="d-flex align-items-center" href="{{ url("task/paid/list") }}">
                             <i data-feather="circle"></i>
                             <span class="menu-item text-truncate"
                                   data-i18n="{{ __("task.menu.name") }} {{ __("task.menu.paid") }}">{{ __("task.menu.paid") }}</span>
@@ -131,7 +131,7 @@
                         </a>
                     </li>
                     <li class="{{ ((isset($menu_active) && $menu_active == 'task_unpaid') ? "active" : "") }}">
-                        <a class="d-flex align-items-center" href="{{ url("task/unpaid") }}">
+                        <a class="d-flex align-items-center" href="{{ url("task/unpaid/list") }}">
                             <i data-feather="circle"></i>
                             <span class="menu-item text-truncate"
                                   data-i18n="{{ __("task.menu.name") }} {{ __("task.menu.unpaid") }}">{{ __("task.menu.unpaid") }}</span>
@@ -189,14 +189,14 @@
                 </a>
                 <ul class="menu-content">
                     <li class="{{ ((isset($menu_active) && $menu_active == 'lawn_new') ? "active" : "") }}">
-                        <a class="d-flex align-items-center" href="{{ url("configuration/lawn/create") }}">
+                        <a class="d-flex align-items-center" href="{{ url("lawn/create") }}">
                             <i data-feather="circle"></i>
                             <span class="menu-item text-truncate"
                                   data-i18n="{{ __("configuration.menu.lawn.name") }} {{ __("configuration.menu.lawn.new") }}">{{ __("configuration.menu.lawn.new") }}</span>
                         </a>
                     </li>
                     <li class="{{ ((isset($menu_active) && $menu_active == 'lawn_list') ? "active" : "") }}">
-                        <a class="d-flex align-items-center" href="{{ url("configuration/lawn") }}">
+                        <a class="d-flex align-items-center" href="{{ url("lawn") }}">
                             <i data-feather="circle"></i>
                             <span class="menu-item text-truncate"
                                   data-i18n="{{ __("configuration.menu.lawn.name") }} {{ __("configuration.menu.lawn.list") }}">{{ __("configuration.menu.lawn.list") }}</span>

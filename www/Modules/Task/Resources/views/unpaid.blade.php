@@ -1,0 +1,121 @@
+@extends("layouts.backend")
+
+@section("content")
+    <section id="responsive-datatable">
+        <div class="row">
+            <div class="offset-md-4 col-md-4 col-sm-6">
+                <div class="card text-center">
+                    <a href="{{ url("/task/unpaid/list") }}">
+                        <div class="card-body d-flex align-items-center justify-content-between">
+                            <div>
+                                <h3 class="fw-bolder mb-75">
+                                    <?php
+                                        $total_paid_nok = 0;
+                                        foreach($tasks as $tpok)
+                                        {
+                                            $total_paid_nok += ($tpok->hour * $tpok->usd);
+                                        }
+                                    ?>
+                                    {{ number_format($total_paid_nok) }}
+                                </h3>
+                                <span>No Paid</span>
+                            </div>
+                            <div class="avatar bg-light-success p-50">
+                                        <span class="avatar-content">
+                                            <i data-feather="award" class="font-medium-4"></i>
+                                        </span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header border-bottom">
+                        <h4 class="card-title">Properties</h4>
+                    </div>
+                    <div class="card-datatable">
+                        <table class="dt-responsive table">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Date</th>
+                                <th>Hour</th>
+                                <th>USD</th>
+                                <th>Total</th>
+                                <th>Property</th>
+                                <th>Description Work</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tfoot>
+                            <tr>
+                                <th>ID</th>
+                                <th>Date</th>
+                                <th>Hour</th>
+                                <th>USD</th>
+                                <th>Total</th>
+                                <th>Property</th>
+                                <th>Description Work</th>
+                                <th>Action</th>
+                            </tr>
+                            </tfoot>
+                            <tbody>
+                            @if(isset($tasks) && $tasks)
+                                @foreach($tasks  as $t)
+                                    <tr>
+                                        <td>{{ $t->id }}</td>
+                                        <td>{{ date("m/d/Y", strtotime($t->date)) }}</td>
+                                        <td>{{ $t->hour }}</td>
+                                        <td>{{ $t->usd }}</td>
+                                        <td>{{ ($t->hour * $t->usd) }}</td>
+                                        <td>{{ $t->property->name }}</td>
+                                        <td>{!! str_replace("*","<br/> *", $t->description_work) !!}</td>
+                                        <td>
+
+                                            <div class="demo-inline-spacing">
+                                                <button type="button" class="btn btn-info btn-href"
+                                                        btn-href="{{ url("task/".$t->id."/edit") }}">
+                                                    <i data-feather="edit-3" class="me-25"></i>
+                                                    <span>Edit</span>
+                                                </button>
+                                                <form method="DELETE" class="form form-vertical" id="form edit_user"
+                                                      name="form_statusproy"
+                                                      action="{{ url("task/".$t->id) }}">
+                                                    @csrf
+                                                    <button type="submit"
+                                                            class="btn btn-danger">
+                                                        <i data-feather="trash" class="me-25"></i>
+                                                        <span>Delete</span>
+                                                    </button>
+                                                </form>
+                                                <a class="btn btn-primary"
+                                                   onclick="javascript:return confirm('are you sure?')"
+                                                   href="{{ url("task/".$t->id."/paid") }}">
+                                                    <i data-feather='dollar-sign'></i>
+                                                    Paid
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @endif
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+@endsection
+@section("script")
+    <script>
+        let dt_responsive_table = $('.dt-responsive');
+        if (dt_responsive_table.length)
+        {
+            let dt_responsive = dt_responsive_table.DataTable();
+        }
+    </script>
+@endsection

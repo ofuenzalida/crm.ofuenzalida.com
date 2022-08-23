@@ -1,0 +1,13 @@
+{
+    "name": "Lawn",
+    "alias": "lawn",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Lawn\\Providers\\LawnServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

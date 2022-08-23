@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600"
           rel="stylesheet"/>
     <link rel="stylesheet" href="{{ url('assets/css/datatables.css') }}"/>
-    <link rel="stylesheet" href="{{ url('css/app.css') }}"/>
+    {{-- <link rel="stylesheet" href="{{ url('css/app.css') }}"/> --}}
     <link rel="stylesheet" href="{{ url('assets/css/theme.css') }}"/>
     <link rel="stylesheet" href="{{ url('assets/css/theme-plugins.css') }}"/>
     @yield("styles")
