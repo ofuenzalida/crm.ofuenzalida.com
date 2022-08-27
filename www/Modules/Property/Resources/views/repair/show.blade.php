@@ -100,11 +100,12 @@
                                         <div class="row">
                                             @foreach($item->repairs_items_files as $irf)
                                                 <div class="col-md-4 col-sm-12">
-                                                    <a href="#" class="popImg">
+                                                    <button type="button" class="btn btn-primary popImg" data-bs-toggle="modal"
+                                                            data-bs-target="#imagenModal">
                                                         <img id="imageResource" src="{{ url($irf->file_path) }}"
                                                              style="width: 120px;"
                                                              class="rounded img-thumbnail"/>
-                                                    </a>
+                                                    </button>
                                                 </div>
                                             @endforeach
                                         </div>

@@ -739,9 +739,8 @@ $(document).ready(function ()
                        */
                       $(".popImg").on("click", function ()
                       {
-                          let imgSrc = this.lastElementChild.currentSrc;
+                          let imgSrc = this.firstElementChild.currentSrc;
                           $('#imagePreview').attr('src', imgSrc);
-                          $('#imageModal').modal('show');
                       });
 
                   });
