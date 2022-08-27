@@ -9,7 +9,7 @@
                         <h4 class="card-title">Properties</h4>
                     </div>
                     <div class="card-datatable">
-                        <table class="dt-responsive table">
+                        <table class="dt-responsive table table-responsive">
                             <thead>
                             <tr>
                                 <th>ID</th>
@@ -95,7 +95,13 @@
         let dt_responsive_table = $('.dt-responsive');
         if (dt_responsive_table.length)
         {
-            let dt_responsive = dt_responsive_table.DataTable();
+            let dt_responsive = dt_responsive_table.DataTable({
+                                                                  responsive: true,
+                                                                  columnDefs: [
+                                                                      {responsivePriority: 1, targets: 0},
+                                                                      {responsivePriority: 2, targets: -1}
+                                                                  ]
+                                                              });
         }
     </script>
 @endsection
