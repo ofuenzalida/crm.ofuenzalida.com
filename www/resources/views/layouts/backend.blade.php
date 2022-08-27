@@ -35,11 +35,11 @@
     </div>
 </div>
 @include("layouts.backend.footer")
-<script src="{{ url('assets/js/theme.js') }}"></script>
-<script src="{{ url('assets/js/datatables.js') }}"></script>
-<script src="{{ url('assets/js/theme-plugins.js') }}"></script>
-<script src="{{ asset('js/app.js') }}" defer></script>
-<script src="{{ url('assets/js/lib.js') }}"></script>
+<script src="{{ url('assets/js/theme.js') }}?v={{ env("CACHE_CSS_JS") }}"></script>
+<script src="{{ url('assets/js/datatables.js') }}?v={{ env("CACHE_CSS_JS") }}"></script>
+<script src="{{ url('assets/js/theme-plugins.js') }}?v={{ env("CACHE_CSS_JS") }}"></script>
+<script src="{{ asset('js/app.js') }}?v={{ env("CACHE_CSS_JS") }}" defer></script>
+<script src="{{ url('assets/js/lib.js') }}?v={{ env("CACHE_CSS_JS") }}"></script>
 <script>
     $(window).on('load', function ()
     {
