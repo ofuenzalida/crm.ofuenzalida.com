@@ -733,6 +733,16 @@ $(document).ready(function ()
                       {
                           rememberMe();
                       });
-                  });
 
+                      /**
+                       * Popup imagen
+                       */
+                      $(".popImg").on("click", function ()
+                      {
+                          let imgSrc = this.lastElementChild.currentSrc;
+                          $('#imagePreview').attr('src', imgSrc);
+                          $('#imageModal').modal('show');
+                      });
+
+                  });
 

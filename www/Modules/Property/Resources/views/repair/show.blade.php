@@ -69,6 +69,7 @@
                                 <th class="py-1">Quality</th>
                                 <th class="py-1">User Responsible</th>
                                 <th class="py-1">Priority</th>
+                                <th class="py-1">Imagen</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -90,10 +91,23 @@
                                         <span class="fw-bold">{{ $item->quantity }}</span>
                                     </td>
                                     <td class="py-1">
-                                        <span class="fw-bold">{{ $item->user->name }}</span>
+                                        <span class="fw-bold">{{ $item->user->name ?? "" }}</span>
                                     </td>
                                     <td class="py-1">
-                                        <span class="fw-bold">{{ $item->priority->name }}</span>
+                                        <span class="fw-bold">{{ $item->priority->name ?? "" }}</span>
+                                    </td>
+                                    <td class="py-1">
+                                        <div class="row">
+                                            @foreach($item->repairs_items_files as $irf)
+                                                <div class="col-md-4 col-sm-12">
+                                                    <a href="#" class="popImg">
+                                                        <img id="imageResource" src="{{ url($irf->file_path) }}"
+                                                             style="width: 120px;"
+                                                             class="rounded img-thumbnail"/>
+                                                    </a>
+                                                </div>
+                                            @endforeach
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach
@@ -112,19 +126,7 @@
         (function (window, document, $)
         {
             'use strict';
-            $('button').click(function ()
-                              {
-                                  var form = $('.needs-validation');
-                                  if (form[0].checkValidity() === false)
-                                  {
-                                      event.preventDefault();
-                                      event.stopPropagation();
-                                  }
-                                  form.addClass('was-validated');
-                              });
-
             $(".flatpickr-basic").flatpickr();
-
         })(window, document, jQuery);
     </script>
 @endsection

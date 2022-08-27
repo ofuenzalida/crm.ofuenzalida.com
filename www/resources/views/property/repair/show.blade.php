@@ -90,10 +90,10 @@
                                         <span class="fw-bold">{{ $item->quantity }}</span>
                                     </td>
                                     <td class="py-1">
-                                        <span class="fw-bold">{{ $item->user->name }}</span>
+                                        <span class="fw-bold">{{ $item->user->name ?? "" }}</span>
                                     </td>
                                     <td class="py-1">
-                                        <span class="fw-bold">{{ $item->priority->name }}</span>
+                                        <span class="fw-bold">{{ $item->priority->name ?? "" }}</span>
                                     </td>
                                 </tr>
                             @endforeach
