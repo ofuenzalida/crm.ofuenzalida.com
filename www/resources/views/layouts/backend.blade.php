@@ -14,10 +14,10 @@
     <title>{{ config('app.name', 'Laravel') }} {{ (isset($title) ? $title : '') }}</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600"
           rel="stylesheet"/>
-    <link rel="stylesheet" href="{{ url('assets/css/datatables.css') }}"/>
-    {{-- <link rel="stylesheet" href="{{ url('css/app.css') }}"/> --}}
-    <link rel="stylesheet" href="{{ url('assets/css/theme.css') }}"/>
-    <link rel="stylesheet" href="{{ url('assets/css/theme-plugins.css') }}"/>
+    <link rel="stylesheet" href="{{ url('assets/css/datatables.css') }}?v={{ env("CACHE_CSS_JS") }}"/>
+    {{-- <link rel="stylesheet" href="{{ url('css/app.css') }}?v={{ env("CACHE_CSS_JS") }}"/> --}}
+    <link rel="stylesheet" href="{{ url('assets/css/theme.css') }}?v={{ env("CACHE_CSS_JS") }}"/>
+    <link rel="stylesheet" href="{{ url('assets/css/theme-plugins.css') }}?v={{ env("CACHE_CSS_JS") }}"/>
     @yield("styles")
 </head>
 <body class="vertical-layout vertical-menu-modern  navbar-floating footer-static" data-open="click"
