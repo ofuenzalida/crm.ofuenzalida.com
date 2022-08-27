@@ -97,18 +97,16 @@
                                         <span class="fw-bold">{{ $item->priority->name ?? "" }}</span>
                                     </td>
                                     <td class="py-1">
-                                        <div class="row">
-                                            @foreach($item->repairs_items_files as $irf)
-                                                <div class="col-md-4 col-sm-12">
-                                                    <button type="button" class="btn btn-primary popImg" data-bs-toggle="modal"
-                                                            data-bs-target="#imagenModal">
-                                                        <img id="imageResource" src="{{ url($irf->file_path) }}"
-                                                             style="width: 120px;"
-                                                             class="rounded img-thumbnail"/>
-                                                    </button>
-                                                </div>
-                                            @endforeach
-                                        </div>
+                                        @foreach($item->repairs_items_files as $irf)
+                                            <a type="button" class="popImg" data-bs-toggle="modal"
+                                               data-bs-target="#imagenModal">
+                                                <img id="imageResource" src="{{ url($irf->file_path) }}"
+                                                     style="width: 120px;"
+                                                     class="img-thumbnail"/>
+                                            </a>
+                                            <br/>
+                                            <br/>
+                                        @endforeach
                                     </td>
                                 </tr>
                             @endforeach
