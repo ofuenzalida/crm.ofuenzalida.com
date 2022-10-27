@@ -12,7 +12,7 @@
 
                         </p>
                         <form action="{{ url("property/repair/".$repair->id) }}" id="form_validation"
-                              method="POST">
+                              method="POST" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             {{ method_field('PUT') }}
                             <div class="row g-1">

@@ -314,6 +314,30 @@
             }
 
 
+            ///
+            ///dd($request->file("item_files"));
+            ///
+            if($request->file("item_files"))
+            {
+                foreach($request->file("item_files") as $item => $value)
+                {
+                    foreach($value as $item2 => $value2)
+                    {
+                        $repairItemsFile                   = new RepairsItemsFile();
+                        $repairItemsFile->properties_id    = $repair->properties_id;
+                        $repairItemsFile->users_id         = $repair->users_id;
+                        $repairItemsFile->repairs_items_id = $item;
+                        $repairItemsFile->repairs_id       = $repair->id;
+                        $fileName                          = time().'_'.$value2->getClientOriginalName();
+                        $filePath                          = $value2->storeAs('uploads', $fileName, 'public');
+                        $repairItemsFile->name             = time().'_'.$value2->getClientOriginalName();
+                        $repairItemsFile->file_path        = '/storage/'.$filePath;
+                        $repairItemsFile->save();
+                    }
+                }
+            }
+
+
             return redirect('property/repair')->with("success", "updated items...");
 
         }
