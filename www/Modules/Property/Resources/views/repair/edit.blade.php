@@ -181,12 +181,12 @@
                                                             <div class="row">
                                                                 <div class="col-12">
                                                                     <div class="mb-1">
-                                                                        <label for="item_files_{{ $i }}"
+                                                                        <label for="item_files_{{ $item->id }}"
                                                                                class="form-label">Multiple
                                                                             files input</label>
-                                                                        <input type="file" name="item_files[{{ $i }}][]"
+                                                                        <input type="file" name="item_files[{{ $item->id }}][]"
                                                                                class="form-control custom-file-input"
-                                                                               id="item_files_{{ $i }}" multiple/>
+                                                                               id="item_files_{{ $item->id }}" multiple/>
                                                                     </div>
                                                                 </div>
                                                             </div>
